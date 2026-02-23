@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #c1fff0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    position: relative;
+}
+
+.objects, .boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item {
+    width: 120px;           
+    height: 120px;
+    font-size: 40px;
+    padding: 10px;
+    background: white;
+    border: 2px solid black;
+    cursor: grab;
+}
+
+.box {
+    width: 120px;           
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px;
+    font-size: 16px;
+    user-select: none;
+    border-radius: 0;      
+}
+
+
+.rojo { background: red; }
+.amarillo { background: rgb(255, 238, 0); }
+.verde { background: green; }
+.azul { background: blue; }
+
+.item img {
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+}
+
+#restartBtn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#arrows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#victory {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;        /* encima de todo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;       /* indica que se puede cerrar */
+}
+
+#victory img {
+    width: 700px;
+    height: auto;
+}
+
+#volverMenu {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #1279ff, #6bd9fa);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+#volverMenu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+#volverMenu:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

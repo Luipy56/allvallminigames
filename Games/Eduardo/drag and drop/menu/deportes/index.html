@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Joc d'Esports</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Relaciona l'esport amb la seva imatge</h1>
+
+<!-- Botó per tornar al menú en qualsevol moment -->
+<div style="text-align:center; margin-bottom:30px;">
+    <a href="../menu.html">
+        <button style="padding:10px 25px; font-size:18px; border:none; border-radius:8px; background-color:#2c3e50; color:white; cursor:pointer;">
+            Tornar al menú
+        </button>
+    </a>
+</div>
+
+<div class="game-container">
+    <div class="image-container">
+        <img id="sportImage" src="" alt="Esport">
+    </div>
+
+    <div class="names-container" id="namesContainer">
+    </div>
+</div>
+
+<div id="message"></div>
+
+<div id="finalScreen" class="hidden">
+    <h2> Felicitats! Has completat tots els esports</h2>
+    <div style="margin-top:20px;">
+        <button onclick="restartGame()">Tornar a començar</button>
+        <a href="../menu.html">
+            <button style="margin-left:15px;">Tornar al menú</button>
+        </a>
+    </div>
+</div>
+
+<script src="js/drag and drop.js"></script>
+</body>
+</html>
