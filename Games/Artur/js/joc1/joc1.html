@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joc 1</title>
+    <link rel="stylesheet" href="joc1.css">
+</head>
+
+<body>
+    <main>
+        <h1>☀️ Classifica els colors ❄️</h1>
+        <p id="feedback"> Arrossega cada quadrat a la seva categoria:</p>
+
+        <div class="zona-origen" id="origen">
+            <div class="fitxa vermell" id="vermell"></div>
+            <div class="fitxa blau" id="blau"></div>
+            <div class="fitxa taronja" id="taronja"></div>
+            <div class="fitxa violeta" id="violeta"></div>
+            <div class="fitxa groc" id="groc"></div>
+            <div class="fitxa verd" id="verd"></div>
+        </div>
+
+        <div class="zones-contenidor">
+            <div class="caixa" id="calid">
+                <h3>☀️ Càlids ☀️</h3>
+            </div>
+            <div class="caixa" id="fred">
+                <h3>❄️ Freds ❄️</h3>
+            </div>
+        </div>
+
+    </main>
+    <div id="popup-victoria" class="popup-ocult">
+        <div class="popup-contingut">
+            <h2>🎉 Felicitats! 🎉</h2>
+            <img src="../imgs/f0550b682c735483a1afc11fd815b192.gif" alt="focs">
+            <p>Has classificat tots els colors correctament</p>
+            <button id="restart">Jugar de nou</button>
+            <a id="menu">Tornar al menu</a>
+        </div>
+    </div>
+    <script src="joc1.js"></script>
+</body>
+
+</html>

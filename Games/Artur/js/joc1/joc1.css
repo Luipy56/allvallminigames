@@ -1,0 +1,200 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../imgs/yeskay1211-hills-2836301_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    padding: 0px 100px;
+}
+
+img{
+    border-radius: 15px;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333333df;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 64px;
+    text-transform: uppercase;
+}
+
+.zona-origen {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 80%;
+    justify-content: center;
+}
+
+.fitxa {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    user-select: none;
+}
+
+.fitxa:active {
+    cursor: grabbing;
+}
+
+.zones-contenidor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    gap: 30px;
+    margin-bottom: 42.88px;
+}
+
+.caixa {
+    width: 50%;
+    border: 3px dashed #bbb;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.caixa h3 {
+    width: 100%;
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0px;
+    color: #ffffff;
+}
+
+.drag-over {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    transform: scale(1.02);
+}
+
+#feedback {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    height: 30px;
+    text-transform: uppercase;
+}
+
+#popup-victoria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fons semitransparent */
+    display: none; /* Amagat per defecte */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* La caixa blanca del missatge */
+.popup-contingut {
+    width: 30%;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Classe que afegirem amb JS per mostrar-lo */
+#popup-victoria.mostrar {
+    display: flex;
+}
+
+#restart{
+    width: 40%;
+    background-color: #4CAF50; /* Verd bonic */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 50px; /* Bordes arrodonits */
+    box-shadow: 0 6px #2e7d32; /* Ombra inferior per donar volum */
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#menu{
+    width: 40%;
+    background-color: #ec9914; /* Verd bonic */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 50px; /* Bordes arrodonits */
+    box-shadow: 0 6px #855303; /* Ombra inferior per donar volum */
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2{
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+div.popup-contingut p{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+/*-------------Colors-------------*/
+
+.vermell{
+    background-color: #e74c3c;
+}
+
+.blau{
+    background-color: #3498db;
+}
+
+.taronja{
+    background-color: #f39c12;
+}
+
+.violeta{
+    background-color: #9b59b6;
+}
+
+.groc{
+    background-color: #ffcc00;
+}
+
+.verd{
+    background-color: #2ecc71;
+}
+
+

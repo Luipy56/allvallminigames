@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Juego Hábitats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="pantallaInicio">
+  <h2>Aprendemos dónde viven</h2>
+
+  <div class="ejemplo">
+    <img src="img/leon_selva.jpg" width="500">
+  </div>
+
+  <div class="ejemplo">
+    <img src="img/delfin_mar.jpg" width="500">
+  </div>
+
+  <div class="ejemplo">
+    <img src="img/oso_bosque.jpg" width="500">
+  </div>
+
+  <button id="btnEmpezar">Empezar</button>
+</div>
+
+
+<div id="pantallaJuego" class="hidden">
+
+  <h2>¿Dónde vive?</h2>
+
+  <div class="zona-animal">
+    <img id="animal" draggable="true">
+  </div>
+
+  <div class="habitats">
+    <div class="habitat" data-habitat="selva">
+        <img src="img/selva.jpg" width="150" height="150">
+    </div>
+    <div class="habitat" data-habitat="mar">
+        <img src="img/mar.jpg" width="150" height="150">
+    </div>
+    <div class="habitat" data-habitat="bosque">
+        <img src="img/bosque.jpg" width="150" height="150">
+    </div>
+  </div>
+
+  <div id="victoria" class="hidden">
+    <img src="victoria.gif" width="300">
+    <br>
+    <button id="btnSiguiente">Siguiente</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaciona · Sencillo</title>
+    <link rel="stylesheet" href="drag&drop.css">
+</head>
+<body>
+    <div class="juego">
+        <h2>Arrastra cada emoji a su palabra</h2>
+
+        <div class="columnas">
+            <!-- Columna izquierda: emojis -->
+            <div class="columna">
+                <h3>Emojis</h3>
+                <div class="emojis">
+                    <div class="emoji" draggable="true" data-palabra="manzana">🍎</div>
+                    <div class="emoji" draggable="true" data-palabra="pelota">⚽</div>
+                    <div class="emoji" draggable="true" data-palabra="coche">🚗</div>
+                    <div class="emoji" draggable="true" data-palabra="perro">🐶</div>
+                    <div class="emoji" draggable="true" data-palabra="gato">🐱</div>
+                </div>
+            </div>
+
+            <!-- Columna derecha: palabras -->
+            <div class="columna">
+                <h3>Palabras</h3>
+                <div class="palabras">
+                    <div class="palabra" data-palabra="gato">gato</div>
+                    <div class="palabra" data-palabra="manzana">manzana</div>
+                    <div class="palabra" data-palabra="perro">perro</div>
+                    <div class="palabra" data-palabra="coche">coche</div>
+                    <div class="palabra" data-palabra="pelota">pelota</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mensaje" style="margin-top: 30px; font-size: 1.5rem; color: #f0e0c0;"></div>
+    </div>
+
+    <script src="drag&drop.js"></script>
+</body>
+</html>

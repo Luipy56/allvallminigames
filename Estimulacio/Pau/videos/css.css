@@ -1,0 +1,112 @@
+.videos{
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* .casa{
+    position: absolute;
+    left: 10px;
+} */
+
+.titulo{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+svg{
+    width: 50px;
+}
+
+.v{
+    background-color: yellow;
+    width: fit-content;
+    padding: 30px;
+    color: rgb(129, 129, 55);
+}
+
+.p{
+    background-color: lime;
+    width: fit-content;
+    padding: 30px;
+    color: rgb(32, 117, 32);
+}
+
+.o{
+    background-color: red;
+    width: fit-content;
+    padding: 30px;
+    color: rgb(116, 34, 34);
+}
+
+.i{
+    background-color: gray;
+    width: fit-content;
+    padding: 30px;
+    color: rgb(51, 51, 51);
+}
+
+a{
+    font-size: xx-large;
+    text-decoration: none;
+}
+.foto{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+}
+
+img{
+    width: 300px;
+    height: 180px;
+}
+
+.nav{
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 95%;
+}
+
+.nav a{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#v{
+    background-color: yellow;
+}
+#p{
+    background-color: lime;
+}
+#o{
+    background-color: red;
+}
+#i{
+    background-color: gray;
+}
+
+body{
+    background-image: url("img/cuatroestaciones.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center center; */
+    display: flex;
+    flex-direction: column;
+}
+
+iframe{
+    position: absolute;
+    align-self: center;
+    top: 35%;
+}

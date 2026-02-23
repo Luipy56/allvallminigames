@@ -1,0 +1,87 @@
+body {
+    background-image: url(img/cielo.gif);
+    background-size: cover;
+    display: grid;
+    place-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.pagina1 {
+    text-align: center;
+    color: red;
+    font-size: 30px;
+}
+
+button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button img {
+    width: 50%;
+    height: 50%;
+}
+
+.lugares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.naturaleza h2 {
+    color: green;
+    text-align: center;
+}
+
+.naturaleza img {
+    width: 500px;
+    height: 300px;
+}
+
+.ciudad h2 {
+    color: yellow;
+    text-align: center;
+}
+
+.ciudad img {
+    width: 500px;
+    height: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+.videoContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+iframe#video {
+    width: 800px;
+    max-width: 90%;
+    height: 450px;
+}
+
+
+.paginaNaturaleza img,
+.paginaCiudad img {
+    width: 500px;
+    height: 300px;
+}
+
+
+.inicio {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    z-index: 1000;
+}
+
+.inicio img {
+    width: 100%;
+}

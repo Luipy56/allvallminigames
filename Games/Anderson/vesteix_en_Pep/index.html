@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Vesteix l'osset</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🧸 Vesteix l'osset</h1>
+
+    <div id="missatge">
+        Arrossega una peça a l'osset
+    </div>
+
+    <div class="joc">
+
+        <div id="zona-osset" class="zona-osset">
+            <img id="osset-base" src="img/osset.png" alt="Osset"class="osset-base">
+            <img id="gorra" src="img/gorra.png" alt="Gorra" class="roba-posada">
+            <img id="ulleres" src="img/ulleres.png" alt="Ulleres" class="roba-posada">
+        </div>
+        <div class="roba-container">
+            <img draggable="true" data-peça="samarreta" src="img/samarreta.png" alt="Samarreta" class="item">
+            <img draggable="true" data-peça="gorra" src="img/gorra.png" alt="Gorra" class="item">
+            <img draggable="true" data-peça="ulleres" src="img/ulleres.png" alt="Ulleres" class="item">
+        </div>
+
+    </div>
+    <button id="reiniciar">
+        🔄 Tornar a començar
+    </button>
+
+    <a href="../menu.html" id="back">
+        Tornar al menu
+    </a>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

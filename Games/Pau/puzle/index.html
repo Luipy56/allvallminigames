@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href=""> <!-- boton para volver al inicio -->
+            <svg aria-hidden="true" viewBox="0 0 437.5 437.5" xmlns="http://www.w3.org/2000/svg">
+                <circle class="pulse-home" cx="218.75" cy="218.75" r="218.75"></circle>
+                <circle class="pulse-home-button color1" cx="218.75" cy="218.75" r="175" style="fill: rgb(105, 107, 116);"></circle>
+                <path class="color2" style="fill:#ffffff; pointer-events:none;" d="M205.36,141.7l-51.43,44.09a20.58,20.58,0,0,0-7.18,15.62v69A10.29,10.29,0,0,0,157,280.75h30.85a10.29,10.29,0,0,0,10.29-10.29V233.09a20.57,20.57,0,0,1,41.14,0v37.37a10.29,10.29,0,0,0,10.29,10.29h30.85a10.29,10.29,0,0,0,10.29-10.29v-69a20.58,20.58,0,0,0-7.18-15.62L232.14,141.7a20.59,20.59,0,0,0-26.78,0"></path>
+            </svg>
+        </a>
+        <h1>Puzzle pingüino</h1>
+    </div>
+    <div id="tablero">
+        <div id="fin" class="container">
+            <div class="colocar" id="c1"></div>
+            <div class="colocar" id="c2"></div>
+            <div class="colocar" id="c3"></div>
+            <div class="colocar" id="c4"></div>
+            <div class="colocar" id="c5"></div>
+            <div class="colocar" id="c6"></div>
+        </div>
+        <div class="info">
+            <img src="img/mover_pieza.gif" alt="">
+        </div>
+        <div class="container" id="inicio">
+            <div class="casilla"><img id="p3" class="pieza c3" src="img/p3.png"></img></div>
+            <div class="casilla"><img id="p6" class="pieza c6" src="img/p6.png"></img></div>
+            <div class="casilla"><img id="p2" class="pieza c2" src="img/p2.png"></img></div>
+            <div class="casilla"><img id="p5" class="pieza c5" src="img/p5.png"></img></div>
+            <div class="casilla"><img id="p1" class="pieza c1" src="img/p1.png"></img></div>
+            <div class="casilla"><img id="p4" class="pieza c4" src="img/p4.png"></img></div>
+        </div>
+    </div>
+    
+</body>
+<script src="js.js"></script>
+</html>
