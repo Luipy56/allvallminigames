@@ -30,6 +30,7 @@
   let matchedPairs = 0;
   let blockClicks = false;
 
+
   function getCanvasCoords(e) {
     var rect = drawCanvas.getBoundingClientRect();
     var scaleX = drawCanvas.width / rect.width;
@@ -316,4 +317,6 @@
   } else {
     onReady();
   }
-})();
+})
+
+();
