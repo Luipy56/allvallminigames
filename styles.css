@@ -115,6 +115,55 @@ body {
   right: 15px;
 }
 
+/* Top Left Navigation */
+.top-nav {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Home Button */
+#home {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+#home svg {
+  width: 22px;
+  height: 22px;
+}
+
+#home:hover {
+  background-color: #555;
+}
+
+/* Navigation Links */
+.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #222;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #ddd;
+}
+
 /* Responsive */
 @media (max-width: 700px) {
   .preview-grid {
