@@ -89,29 +89,33 @@ h1 {
     white-space: nowrap;
 }
 
-.boton-volver {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(212, 175, 55, 0.2);
-    border: 2px solid #d4af37;
-    color: #d4af37;
-    padding: 10px 15px;
-    border-radius: 10px;
+#home {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    height: 75px;
+    width: 75px;
+    border-radius: 100%;
+    border: 3px solid #d4af37;
+    padding: 15px;
+    background-color: rgba(212, 175, 55, 0.2);
     cursor: pointer;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    text-decoration: none;
-    display: inline-flex;
+    opacity: 0.8;
+    z-index: 1000;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+    justify-content: center;
 }
-
-.boton-volver:hover {
-    background: rgba(212, 175, 55, 0.4);
+#home:hover {
+    transition: 0.3s ease;
     transform: scale(1.05);
+    opacity: 1;
+    background-color: rgba(212, 175, 55, 0.4);
+}
+#home svg {
+    width: 28px;
+    height: 28px;
+    color: #d4af37;
 }
 
 @media (max-width: 1200px) {
