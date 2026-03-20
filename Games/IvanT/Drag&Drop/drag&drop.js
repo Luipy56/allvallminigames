@@ -1,9 +1,35 @@
 const emojis = document.querySelectorAll('.emoji');
 const palabras = document.querySelectorAll('.palabra');
 const mensaje = document.getElementById('mensaje');
+const modalVictoria = document.getElementById('modal-victoria');
 
 let aciertos = 0;
 const total = emojis.length;
+let timeoutReinicio = null;
+
+var audioAplausos = new Audio('../../../Ruben/mapapirata/sounds/claps.mp3');
+audioAplausos.volume = 0.3;
+
+function reiniciarNivel() {
+    emojis.forEach(el => el.classList.remove('oculto'));
+    palabras.forEach(el => el.classList.remove('oculto'));
+    aciertos = 0;
+    mensaje.textContent = '';
+    modalVictoria.classList.remove('visible');
+    modalVictoria.setAttribute('aria-hidden', 'true');
+    if (timeoutReinicio) {
+        clearTimeout(timeoutReinicio);
+        timeoutReinicio = null;
+    }
+}
+
+function mostrarModalVictoria() {
+    modalVictoria.classList.add('visible');
+    modalVictoria.setAttribute('aria-hidden', 'false');
+    audioAplausos.currentTime = 0;
+    audioAplausos.play().catch(function() {});
+    timeoutReinicio = setTimeout(reiniciarNivel, 5000);
+}
 
 // Hacer que los emojis sean arrastrables
 emojis.forEach(emoji => {
@@ -40,11 +66,13 @@ palabras.forEach(palabra => {
 
             if (emojiCorrecto) {
                 emojiCorrecto.classList.add('oculto');
+                palabra.classList.add('oculto');
                 aciertos++;
                 mensaje.textContent = '¡Bien! Sigue así.';
 
                 if (aciertos === total) {
-                    mensaje.textContent = '🎉 ¡Completaste todos! 🎉';
+                    mensaje.textContent = '';
+                    mostrarModalVictoria();
                 }
             }
         } else {

@@ -25,7 +25,6 @@ const canvasOpciones = [
     document.getElementById('canvasOpcion4')
 ];
 const elementoMensaje = document.getElementById('mensaje');
-const botonSiguiente = document.getElementById('botonSiguiente');
 
 // Función para obtener contexto de canvas
 function obtenerContextoCanvas(canvas) {
@@ -71,7 +70,7 @@ function generarNuevaRonda() {
     // Dibujar figura objetivo en canvas grande
     const ctxObjetivo = obtenerContextoCanvas(canvasObjetivo);
     ctxObjetivo.clearRect(0, 0, canvasObjetivo.width, canvasObjetivo.height);
-    dibujarForma(ctxObjetivo, formaObjetivo, colorObjetivo.hex, canvasObjetivo.width / 2, canvasObjetivo.height / 2, 70);
+    dibujarForma(ctxObjetivo, formaObjetivo, colorObjetivo.hex, canvasObjetivo.width / 2, canvasObjetivo.height / 2, 60);
     
     // Generar opciones para abajo
     opcionesFormas = [];
@@ -101,7 +100,7 @@ function generarNuevaRonda() {
         const canvas = canvasOpciones[i];
         const ctx = obtenerContextoCanvas(canvas);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        dibujarForma(ctx, opcionForma, opcionColor.hex, canvas.width / 2, canvas.height / 2, 35);
+        dibujarForma(ctx, opcionForma, opcionColor.hex, canvas.width / 2, canvas.height / 2, 60);
         
         canvas.onclick = () => manejarClickOpcion(i);
     }
@@ -126,6 +125,9 @@ function manejarClickOpcion(indice) {
         elementoMensaje.textContent = '🎉 ENHORABONA! 🎉';
         elementoMensaje.style.color = '#26de81';
         elementoMensaje.className = 'mensaje celebrar-loop';
+        
+        // Reiniciar automáticamente después de 5 segundos
+        setTimeout(generarNuevaRonda, 5000);
     } else {
         elementoMensaje.textContent = 'Ànim, tu pots! 💪';
         elementoMensaje.style.color = '#ff6b6b';
@@ -141,8 +143,6 @@ function manejarClickOpcion(indice) {
         }, 1500);
     }
 }
-
-botonSiguiente.addEventListener('click', generarNuevaRonda);
 
 // Iniciar juego
 generarNuevaRonda();

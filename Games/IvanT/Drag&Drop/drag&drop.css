@@ -94,7 +94,7 @@ h2, h3 {
 }
 
 .palabra {
-    font-size: 2rem;
+    font-size: 4rem;
     background: #e0b589;
     width: 200px;
     padding: 15px 0;
@@ -109,6 +109,48 @@ h2, h3 {
     border-color: #f7d44a;
 }
 
+.palabra.oculto {
+    opacity: 0;
+    pointer-events: none;
+}
+
 #mensaje {
     font-weight: bold;
+}
+
+/* Modal victoria */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 30, 18, 0.75);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.visible {
+    display: flex;
+}
+
+.modal-victoria {
+    background: #c9a87c;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    border: 4px solid #ac8e68;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.modal-titulo {
+    font-size: 2.5rem;
+    color: #2e1e12;
+    margin: 0 0 0.5rem 0;
+    font-weight: bold;
+}
+
+.modal-subtitulo {
+    font-size: 1.25rem;
+    color: #2e1e12;
+    margin: 0;
 }

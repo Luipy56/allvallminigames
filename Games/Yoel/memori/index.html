@@ -15,9 +15,6 @@
   <div class="app">
     <main class="main">
       <div class="game-box" id="gameBox">
-        <a href="../../../index.html#page3">
-        <button type="button" class="btn btn-back" id="backBtn" aria-label="Volver atrás">Volver</button>
-        </a>
         <div class="memori-board-wrap" id="memoriBoardWrap" hidden>
           <div class="memori-grid" id="memoriGrid" aria-label="Tablero de cartas del memori"></div>
         </div>
@@ -29,14 +26,22 @@
   <!-- Modal inicial: dibuja tu tarjeta -->
   <div class="modal-overlay" id="drawModalOverlay" role="dialog" aria-modal="true" aria-labelledby="drawModalTitle">
     <div class="modal modal-draw" id="drawModal">
-      <h2 class="modal-title" id="drawModalTitle">Dibuja tu tarjeta</h2>
+      <h2 class="modal-title" id="drawModalTitle">🖍️ Dibuja tu tarjeta 🖍️</h2>
       <p class="modal-text">Dibuja tu tarjeta en el recuadro. Cuando termines, pulsa Listo.</p>
+      <div class="draw-colors" role="group" aria-label="Color del pincel">
+        <button type="button" class="draw-color-swatch selected" data-color="#2c2c2c" style="background-color:#2c2c2c" aria-label="Negro" title="Negro"></button>
+        <button type="button" class="draw-color-swatch" data-color="#c44" style="background-color:#c44" aria-label="Rojo" title="Rojo"></button>
+        <button type="button" class="draw-color-swatch" data-color="#46a" style="background-color:#46a" aria-label="Azul" title="Azul"></button>
+        <button type="button" class="draw-color-swatch" data-color="#5a7a6a" style="background-color:#5a7a6a" aria-label="Verde" title="Verde"></button>
+        <button type="button" class="draw-color-swatch" data-color="#8b6914" style="background-color:#8b6914" aria-label="Marrón" title="Marrón"></button>
+        <button type="button" class="draw-color-swatch" data-color="#da8c1f" style="background-color:#da8c1f" aria-label="Ámbar" title="Ámbar"></button>
+      </div>
       <div class="draw-area">
         <canvas id="drawCanvas" width="260" height="260" aria-label="Zona de dibujo"></canvas>
       </div>
       <div class="modal-actions modal-actions-draw">
-        <button type="button" class="btn btn-secondary" id="drawClearBtn">Borrar</button>
-        <button type="button" class="btn btn-primary" id="drawDoneBtn">Listo</button>
+        <button type="button" class="btn btn-secondary" id="drawClearBtn" aria-label="Borrar">Borrar 🧽</button>
+        <button type="button" class="btn btn-primary" id="drawDoneBtn" aria-label="Listo">Listo 🗸</button>
       </div>
     </div>
   </div>

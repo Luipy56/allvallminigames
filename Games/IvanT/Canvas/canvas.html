@@ -13,8 +13,15 @@
       </button>
     </a>
     <div class="game-wrapper">
-        <p>🟡 Encuentra la pelota 🟡</p>
+        <p id="instruction"><canvas id="instructionIcon" width="48" height="48" aria-hidden="true"></canvas><span id="instructionText">Encuentra la pelota</span></p>
         <canvas id="canvas" width="800" height="500"></canvas>
+    </div>
+    <div class="modal-overlay" id="modalOverlay" hidden>
+        <div class="modal">
+            <h2 class="modal-title" id="modalTitle">¡Encontrado!</h2>
+            <p class="modal-text" id="modalText"></p>
+            <button type="button" class="btn-modal" id="modalBtn">Continuar</button>
+        </div>
     </div>
     <script src="canvas.js"></script>
 </body>

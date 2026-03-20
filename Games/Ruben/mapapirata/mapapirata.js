@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var contenedorPiezas = document.getElementById('contenedor-piezas');  // Donde se muestran las piezas sueltas
     var celdasGrid = document.querySelectorAll('.celda-rejilla');        // Las 8 celdas del mapa
     var mensajeDiv = document.getElementById('mensaje');                   // Mensaje de victoria
-    var botonReiniciar = document.getElementById('boton-reiniciar');       // Botón para reiniciar
     var botonMusica = document.getElementById('boton-musica');             // Botón para música
     
     // --- VARIABLES DE ESTADO DEL JUEGO ---
     var piezasColocadas = [];  // Array que guarda los números de las piezas colocadas correctamente
     var totalPiezas = 8;        // Total de piezas que tiene el puzzle (no cambiar)
+    var tutorialMostrado = false;  // Controla si el tutorial ya se ha mostrado alguna vez
     
     // --- CONFIGURACIÓN DE AUDIO ---
     // Música de fondo
@@ -156,6 +156,13 @@ document.addEventListener('DOMContentLoaded', function() {
         piezasColocadas = [];
         contenedorPiezas.innerHTML = '';
         
+        // Mostrar tutorial de nuevo al iniciar
+        tutorialMostrado = false;
+        var tutorial = document.getElementById('tutorial-mano');
+        if (tutorial) {
+            tutorial.classList.remove('oculto');
+        }
+        
         // Limpiar celdas del grid (quitar piezas y clases 'correct')
         for (var i = 0; i < celdasGrid.length; i++) {
             celdasGrid[i].innerHTML = '';
@@ -190,9 +197,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var celdaOrigen = null;   // Celda de origen (donde estaba la pieza)
     var rectOriginal = null;  // Dimensiones originales de la pieza
     
+    // --- Función: Ocultar tutorial ---
+    // Se llama cuando el usuario comienza a arrastrar
+    function ocultarTutorial() {
+        if (!tutorialMostrado) {
+            var tutorial = document.getElementById('tutorial-mano');
+            if (tutorial) {
+                tutorial.classList.add('oculto');
+            }
+            tutorialMostrado = true;
+        }
+    }
+
     // --- Función: Iniciar arrastre con ratón ---
     // Se llama cuando el usuario empieza a arrastrar una pieza
     function iniciarArrastreRaton(e, pieza) {
+        ocultarTutorial();
         piezaRaton = pieza;
         celdaOrigen = pieza.parentElement;
         rectOriginal = pieza.getBoundingClientRect();
@@ -277,10 +297,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Si todas las piezas están colocadas, ganar
                     if (piezasColocadas.length === totalPiezas) {
-                        console.log('HAS GUANYAT! Reproduint aplaudiments');
+                        console.log('HAS GUANYAT! Reproduint aplaus');
                         reproducirSonido(audioAplausos, 'aplausos');
                         setTimeout(function() {
                             mensajeDiv.classList.add('show');
+                            iniciarCuentaAtras();
                         }, 300);
                     }
                 } else {
@@ -335,6 +356,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function iniciarTouch(e) {
         // Inicializar audio para iOS (si es la primera vez)
         inicializarAudioiOS();
+        
+        // Ocultar tutorial en interacción táctil
+        ocultarTutorial();
         
         e.preventDefault(); // Evitar scroll mientras se arrastra
         
@@ -434,6 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         reproducirSonido(audioAplausos, 'aplausos');
                         setTimeout(function() {
                             mensajeDiv.classList.add('show');
+                            iniciarCuentaAtras();
                         }, 300);
                     }
                 } else {
@@ -495,10 +520,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // BOTÓN DE REINICIAR
+    // CUENTA ATRÁS PARA REINICIAR
     // ============================================
-    // Reinicia el joc des de l'inici
-    botonReiniciar.addEventListener('click', iniciarJuego);
+    // Variable para controlar el timeout de la cuenta atrás
+    var timeoutCuentaAtras = null;
+    
+    // Función que inicia la cuenta atrás de 5 segundos
+    function iniciarCuentaAtras() {
+        var cuentaAtrasElemento = document.getElementById('cuenta-atras');
+        var segundosRestantes = 5;
+        
+        // Actualizar el texto inicial
+        if (cuentaAtrasElemento) {
+            cuentaAtrasElemento.textContent = 'Tornant a jugar en ' + segundosRestantes + ' segons...';
+        }
+        
+        // Intervalo para actualizar la cuenta
+        var intervalo = setInterval(function() {
+            segundosRestantes--;
+            if (cuentaAtrasElemento) {
+                cuentaAtrasElemento.textContent = 'Tornant a jugar en ' + segundosRestantes + ' segons...';
+            }
+            
+            if (segundosRestantes <= 0) {
+                clearInterval(intervalo);
+                // Reiniciar el juego
+                iniciarJuego();
+            }
+        }, 1000);
+    }
     
     // ============================================
     // INICIO DEL JUEGO

@@ -20,7 +20,6 @@
   const modalTitle = document.getElementById('modalTitle');
   const modalText = document.getElementById('modalText');
   const modalBtn = document.getElementById('modalBtn');
-  const backBtn = document.getElementById('backBtn');
 
   let imageList = [];
   let userCardDataUrl = '';
@@ -29,6 +28,7 @@
   let flippedIndices = [];
   let matchedPairs = 0;
   let blockClicks = false;
+  let currentDrawColor = '#2c2c2c';
 
 
   function getCanvasCoords(e) {
@@ -44,7 +44,7 @@
     var ctx = drawCanvas.getContext('2d');
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, drawCanvas.width, drawCanvas.height);
-    ctx.strokeStyle = '#2c2c2c';
+    ctx.strokeStyle = currentDrawColor;
     ctx.lineWidth = 7;
     ctx.lineCap = 'round';
     hasDrawn = false;
@@ -58,6 +58,7 @@
         ctx.beginPath();
         ctx.moveTo(last.x, last.y);
         ctx.lineTo(x, y);
+        ctx.strokeStyle = currentDrawColor;
         ctx.stroke();
       }
       last = { x: x, y: y };
@@ -87,12 +88,27 @@
     drawCanvas.addEventListener('touchstart', onPointerDown, { passive: false });
     drawCanvas.addEventListener('touchmove', onPointerMove, { passive: false });
     drawCanvas.addEventListener('touchend', onPointerUp, { passive: false });
+
+    var swatches = document.querySelectorAll('.draw-colors .draw-color-swatch');
+    swatches.forEach(function (el, i) {
+      el.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+      el.addEventListener('click', function () {
+        var color = el.getAttribute('data-color');
+        if (color) {
+          currentDrawColor = color;
+          swatches.forEach(function (s) { s.classList.remove('selected'); s.setAttribute('aria-pressed', 'false'); });
+          el.classList.add('selected');
+          el.setAttribute('aria-pressed', 'true');
+        }
+      });
+    });
   }
 
   function clearCanvas() {
     var ctx = drawCanvas.getContext('2d');
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, drawCanvas.width, drawCanvas.height);
+    ctx.strokeStyle = currentDrawColor;
     hasDrawn = false;
   }
 
@@ -297,19 +313,10 @@
     });
   }
 
-  function onBack() {
-    if (window.location.pathname.replace(/\/$/, '').split('/').pop() === 'memori') {
-      window.location.href = '../';
-    } else {
-      window.location.href = 'index.html';
-    }
-  }
-
   function onReady() {
     initDrawing();
     drawClearBtn.addEventListener('click', clearCanvas);
     drawDoneBtn.addEventListener('click', onDrawDone);
-    if (backBtn) backBtn.addEventListener('click', onBack);
   }
 
   if (document.readyState === 'loading') {

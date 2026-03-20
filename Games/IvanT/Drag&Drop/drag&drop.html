@@ -13,7 +13,7 @@
       </button>
     </a>
     <div class="juego">
-        <h2>Arrastra cada emoji a su palabra</h2>
+        <h2>Arrastra cada emoji con su pareja</h2>
 
         <div class="columnas">
             <!-- Columna izquierda: emojis -->
@@ -28,20 +28,26 @@
                 </div>
             </div>
 
-            <!-- Columna derecha: palabras -->
+            <!-- Columna derecha: parejas (emojis relacionados) -->
             <div class="columna">
-                <h3>Palabras</h3>
+                <h3>Parejas</h3>
                 <div class="palabras">
-                    <div class="palabra" data-palabra="gato">gato</div>
-                    <div class="palabra" data-palabra="manzana">manzana</div>
-                    <div class="palabra" data-palabra="perro">perro</div>
-                    <div class="palabra" data-palabra="coche">coche</div>
-                    <div class="palabra" data-palabra="pelota">pelota</div>
+                    <div class="palabra" data-palabra="gato">🐟</div>
+                    <div class="palabra" data-palabra="manzana">🍏</div>
+                    <div class="palabra" data-palabra="perro">🦴</div>
+                    <div class="palabra" data-palabra="coche">🚙</div>
+                    <div class="palabra" data-palabra="pelota">🏀</div>
                 </div>
             </div>
         </div>
 
         <div id="mensaje" style="margin-top: 30px; font-size: 1.5rem; color: #f0e0c0;"></div>
+    </div>
+
+    <div id="modal-victoria" class="modal-overlay" aria-hidden="true">
+        <div class="modal-victoria">
+            <p class="modal-titulo">¡Victoria!</p>
+        </div>
     </div>
 
     <script src="drag&drop.js"></script>
