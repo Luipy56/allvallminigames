@@ -185,6 +185,11 @@ body {
 }
 
 /* Modal de dibujo */
+.modal-draw .modal-title,
+.modal-draw .modal-text {
+  text-align: center;
+}
+
 .modal-draw .draw-colors {
   display: flex;
   flex-wrap: wrap;
