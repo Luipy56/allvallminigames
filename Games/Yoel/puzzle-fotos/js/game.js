@@ -12,8 +12,10 @@
   const IMAGE_NAME_PATTERN = 'img'; // img1.png, img2.png, ...
   const IMAGE_MAX_PROBE = 100;      // deja de probar tras N intentos
   const USED_IMAGES_KEY = 'puzzle-fotos-used';
+  const VICTORY_NEXT_MS = 5000; // tras completar, pasar a otra foto automáticamente
 
   let imageList = []; // lista descubierta dinámicamente
+  var victoryNextTimer = null;
 
   function getUsedImages() {
     try {
@@ -167,6 +169,21 @@
     return order;
   }
 
+  function clearVictoryNextTimer() {
+    if (victoryNextTimer != null) {
+      clearTimeout(victoryNextTimer);
+      victoryNextTimer = null;
+    }
+  }
+
+  function scheduleNextPuzzleAfterVictory() {
+    clearVictoryNextTimer();
+    victoryNextTimer = setTimeout(function () {
+      victoryNextTimer = null;
+      startNewGame();
+    }, VICTORY_NEXT_MS);
+  }
+
   function initBoardAndPieces() {
     createSlots();
     createPieces(shuffleOrder());
@@ -290,6 +307,7 @@
         if (correctCount === TOTAL) {
           var gameBox = piecesWrap.closest('.game-box');
           if (gameBox) gameBox.classList.add('victory');
+          scheduleNextPuzzleAfterVictory();
         }
       } else {
         // showModal('Otra posición', 'Esta pieza no corresponde a esta casilla. Prueba en otra.', function () {});
@@ -330,6 +348,7 @@
   }
 
   function startNewGame() {
+    clearVictoryNextTimer();
     var gameBox = piecesWrap.closest('.game-box');
     if (gameBox) gameBox.classList.remove('victory');
     var filename = pickRandomImage();
