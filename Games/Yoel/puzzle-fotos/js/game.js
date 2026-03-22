@@ -176,7 +176,16 @@
   function attachDragListeners() {
     piecesWrap.querySelectorAll('.piece').forEach(function (pieceEl) {
       pieceEl.addEventListener('mousedown', onPieceMouseDown);
+      pieceEl.addEventListener('touchstart', onPieceTouchStart, { passive: false });
     });
+  }
+
+  function removeDocumentDragListeners() {
+    document.removeEventListener('mousemove', onDragMove);
+    document.removeEventListener('mouseup', onDragEnd);
+    document.removeEventListener('touchmove', onTouchMove);
+    document.removeEventListener('touchend', onTouchEnd);
+    document.removeEventListener('touchcancel', onTouchEnd);
   }
 
   var draggedEl = null;
@@ -185,45 +194,73 @@
   var dragOffsetX = 0;
   var dragOffsetY = 0;
 
-  function onPieceMouseDown(e) {
-    if (e.button !== 0) return;
-    var piece = e.target.closest('.piece');
-    if (!piece || !piecesWrap.contains(piece) || piece.closest('.slot')) return;
-    e.preventDefault();
+  function pieceCanDrag(piece) {
+    return piece && piecesWrap.contains(piece) && !piece.closest('.slot');
+  }
 
+  function startDrag(piece, clientX, clientY) {
     draggedEl = piece;
     draggedPieceIndex = parseInt(piece.dataset.pieceIndex, 10);
     var rect = piece.getBoundingClientRect();
-    dragOffsetX = e.clientX - rect.left;
-    dragOffsetY = e.clientY - rect.top;
+    dragOffsetX = clientX - rect.left;
+    dragOffsetY = clientY - rect.top;
 
     ghost = document.createElement('div');
     ghost.className = 'piece-ghost';
     setPieceBackground(ghost, draggedPieceIndex);
     document.body.appendChild(ghost);
-    ghost.style.left = (e.clientX - dragOffsetX) + 'px';
-    ghost.style.top = (e.clientY - dragOffsetY) + 'px';
+    ghost.style.left = (clientX - dragOffsetX) + 'px';
+    ghost.style.top = (clientY - dragOffsetY) + 'px';
 
     piece.classList.add('dragging');
-
-    document.addEventListener('mousemove', onDragMove);
-    document.addEventListener('mouseup', onDragEnd);
   }
 
-  function onDragMove(e) {
+  function updateDragAt(clientX, clientY) {
     if (!ghost) return;
-    ghost.style.left = (e.clientX - dragOffsetX) + 'px';
-    ghost.style.top = (e.clientY - dragOffsetY) + 'px';
-    var slot = getSlotFromPoint(e.clientX, e.clientY);
+    ghost.style.left = (clientX - dragOffsetX) + 'px';
+    ghost.style.top = (clientY - dragOffsetY) + 'px';
+    var slot = getSlotFromPoint(clientX, clientY);
     board.querySelectorAll('.slot').forEach(function (s) {
       if (s === slot && slot && !slot.classList.contains('filled')) s.classList.add('drag-over');
       else s.classList.remove('drag-over');
     });
   }
 
-  function onDragEnd(e) {
-    document.removeEventListener('mousemove', onDragMove);
-    document.removeEventListener('mouseup', onDragEnd);
+  function onPieceMouseDown(e) {
+    if (e.button !== 0) return;
+    var piece = e.target.closest('.piece');
+    if (!pieceCanDrag(piece)) return;
+    e.preventDefault();
+
+    startDrag(piece, e.clientX, e.clientY);
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+  }
+
+  function onPieceTouchStart(e) {
+    var piece = e.target.closest('.piece');
+    if (!pieceCanDrag(piece)) return;
+    e.preventDefault();
+    var t = e.touches[0];
+    if (!t) return;
+
+    startDrag(piece, t.clientX, t.clientY);
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd);
+    document.addEventListener('touchcancel', onTouchEnd);
+  }
+
+  function onDragMove(e) {
+    updateDragAt(e.clientX, e.clientY);
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    var t = e.touches[0];
+    if (t) updateDragAt(t.clientX, t.clientY);
+  }
+
+  function finishDragAt(clientX, clientY) {
     board.querySelectorAll('.slot').forEach(function (s) { s.classList.remove('drag-over'); });
 
     if (ghost) {
@@ -237,7 +274,7 @@
       return;
     }
 
-    var slot = getSlotFromPoint(e.clientX, e.clientY);
+    var slot = getSlotFromPoint(clientX, clientY);
     if (slot && !slot.classList.contains('filled')) {
       var slotIndex = parseInt(slot.dataset.index, 10);
       var isCorrect = draggedPieceIndex === slotIndex;
@@ -262,6 +299,29 @@
     if (draggedEl) draggedEl.classList.remove('dragging');
     draggedEl = null;
     draggedPieceIndex = null;
+  }
+
+  function onDragEnd(e) {
+    removeDocumentDragListeners();
+    finishDragAt(e.clientX, e.clientY);
+  }
+
+  function onTouchEnd(e) {
+    removeDocumentDragListeners();
+    if (e.cancelable) e.preventDefault();
+    var t = e.changedTouches[0];
+    if (!t) {
+      board.querySelectorAll('.slot').forEach(function (s) { s.classList.remove('drag-over'); });
+      if (ghost) {
+        ghost.remove();
+        ghost = null;
+      }
+      if (draggedEl) draggedEl.classList.remove('dragging');
+      draggedEl = null;
+      draggedPieceIndex = null;
+      return;
+    }
+    finishDragAt(t.clientX, t.clientY);
   }
 
   function getSlotFromPoint(x, y) {
