@@ -48,6 +48,18 @@
   const modalBtn = document.getElementById('modalBtn');
   const boardBg = document.getElementById('boardBg');
   const changeImageBtn = document.getElementById('changeImageBtn');
+  const imageLoading = document.getElementById('imageLoading');
+
+  function setImageLoading(show) {
+    if (!imageLoading) return;
+    if (show) {
+      imageLoading.hidden = false;
+      imageLoading.removeAttribute('hidden');
+    } else {
+      imageLoading.hidden = true;
+      imageLoading.setAttribute('hidden', '');
+    }
+  }
 
   let currentImageUrl = '';
   let currentImagePath = '';
@@ -349,10 +361,12 @@
 
   function startNewGame() {
     clearVictoryNextTimer();
+    setImageLoading(true);
     var gameBox = piecesWrap.closest('.game-box');
     if (gameBox) gameBox.classList.remove('victory');
     var filename = pickRandomImage();
     if (!filename) {
+      setImageLoading(false);
       showModal('Sin imágenes', 'Añade fotos en la carpeta images/ con nombres img1.png, img2.png, img3.png, etc.', function () {});
       return;
     }
@@ -365,14 +379,17 @@
         boardBg.style.backgroundImage = 'url(' + currentImageUrl + ')';
       }
       initBoardAndPieces();
+      setImageLoading(false);
     };
     img.onerror = function () {
+      setImageLoading(false);
       showModal('Error', 'No se pudo cargar la imagen. Comprueba que existe en la carpeta images/.', function () {});
     };
     img.src = currentImagePath;
   }
 
   function onReady() {
+    setImageLoading(true);
     discoverImages(function () {
       startNewGame();
     });
