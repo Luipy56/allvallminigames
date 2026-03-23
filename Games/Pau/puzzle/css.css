@@ -1,0 +1,143 @@
+.pieza {
+    height: 200px;
+    margin: 0px;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid gray;
+    border-radius: 25px;
+    overflow: hidden;
+}
+#tablero{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    gap: 4px;
+}
+
+.colocar{
+    height: 200px;
+    width: 200px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
+
+#fin{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(img/pinguino.jpg);
+    width: fit-content;
+    height: fit-content;
+}
+
+#inicio{
+    align-items: center;
+    justify-items: center;
+    min-width: 800px;
+    min-height: 600px;
+}
+h1{
+    margin: 0;
+}
+
+svg{
+    width: 50px;
+}
+
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.navbar a{
+    position: absolute;
+    left: 10px;
+}
+
+.info img{
+    width: 250px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    background-color: rgb(105, 107, 116);
+}
+
+/* Blurred background image (scaled to hide blur edge halos) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: rgb(105, 107, 116);
+    background-image: url(img/artico.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.05);
+    transform-origin: center center;
+}
+
+/* Frosted / “molten glass” veil over the blurred scene */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(118%);
+    -webkit-backdrop-filter: blur(12px) saturate(118%);
+}
+
+#c1{
+    border-top-left-radius: 25px;
+    overflow: hidden;
+}
+
+#c3{
+    border-top-right-radius: 25px;
+    overflow: hidden;
+}
+
+#c4{
+    border-bottom-left-radius: 25px;
+    overflow: hidden;
+}
+
+#c6{
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+}
+
+@media (width < 1680px){
+    #tablero{
+        flex-direction: column;
+    }
+    .casilla .pieza {
+        height: 100px;
+    }
+    .info img{
+        width: 152px;
+    }
+    #inicio{
+        align-items: center;
+        justify-items: center;
+        min-width: 400px;
+        min-height: 300px;
+    }
+
+}

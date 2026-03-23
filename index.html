@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jocs Interactius</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,136 +11,198 @@
 </head>
 <body>
 
-  <div class="top-nav">
-    <a href="./index.html#page5" class="nav-link">Videos Estimulatius</a>
-    <a href="./index.html#page1" class="nav-link">Jocs Interactius</a>
-  </div>
+  <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
+
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Triar secció: jocs o vídeos">
+      <a href="./index.html#page5" class="nav-link" id="nav-videos">Videos Estimulatius</a>
+      <a href="./index.html#page1" class="nav-link" id="nav-jocs">Jocs Interactius</a>
+    </nav>
+  </header>
+
+  <div id="page-status" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <main id="main-content" tabindex="-1">
+  <nav class="page-dots" id="page-dots" aria-label="Trieu la pàgina del menú (1 a 5)">
+    <a href="./index.html#page1" class="page-dot" data-target="page1"><span class="visually-hidden">Menú pàgina 1, jocs</span><span class="page-dot-num" aria-hidden="true">1</span></a>
+    <a href="./index.html#page2" class="page-dot" data-target="page2"><span class="visually-hidden">Menú pàgina 2, jocs</span><span class="page-dot-num" aria-hidden="true">2</span></a>
+    <a href="./index.html#page3" class="page-dot" data-target="page3"><span class="visually-hidden">Menú pàgina 3, jocs</span><span class="page-dot-num" aria-hidden="true">3</span></a>
+    <a href="./index.html#page4" class="page-dot" data-target="page4"><span class="visually-hidden">Menú pàgina 4, jocs</span><span class="page-dot-num" aria-hidden="true">4</span></a>
+    <a href="./index.html#page5" class="page-dot" data-target="page5"><span class="visually-hidden">Menú pàgina 5, vídeos</span><span class="page-dot-num" aria-hidden="true">5</span></a>
+  </nav>
 
   <!-- Page 1 -->
-  <div class="page-container hub-page" id="page1" data-page="1">
-    <h1 class="page-title">Jocs Interactius</h1>
-    <div class="preview-grid">
-      <a href="./Games/Ruben/mapapirata/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Games/Ruben/mapapirata/caputra_mapapirata.png" alt="Mapa Pirata"></div>
-        <span class="card-title">Mapa Pirata</span>
-      </a>
-      <a href="./Games/Ruben/funshapes/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Games/Ruben/funshapes/captura_funshapes.png" alt="Imatges Divertides"></div>
-        <span class="card-title">Imatges Divertides</span>
-      </a>
-      <a href="./Games/Alejandro/descubre_la_sombra/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/adivina-animal.png" alt="Adivina l'animal"></div>
-        <span class="card-title">Adivina l'animal</span>
-      </a>
-      <a href="./Games/Alejandro/puzle/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/puzle.png" alt="Puzle"></div>
-        <span class="card-title">Puzle</span>
-      </a>
-      <a href="./Games/Anderson/pinta_cares/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/pinta-cares.png" alt="Pinta Cares"></div>
-        <span class="card-title">Pinta Cares</span>
-      </a>
-      <a href="./Games/Anderson/vesteix_en_Pep/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/vesteix-pep.png" alt="Vesteix al Pep"></div>
-        <span class="card-title">Vesteix al Pep</span>
-      </a>
-    </div>
+  <div class="page-container hub-page" id="page1" data-page="1" role="region" aria-labelledby="page1-title">
+    <h1 class="page-title" id="page1-title">Jocs Interactius</h1>
+    <ul class="preview-grid">
+      <li>
+        <a href="./Games/Ruben/mapapirata/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Games/Ruben/mapapirata/caputra_mapapirata.png" alt="" decoding="async"></div>
+          <span class="card-title">Mapa Pirata</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Ruben/funshapes/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Games/Ruben/funshapes/captura_funshapes.png" alt="" decoding="async"></div>
+          <span class="card-title">Imatges Divertides</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Alejandro/descubre_la_sombra/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/adivina-animal.png" alt="" decoding="async"></div>
+          <span class="card-title">Adivina l'animal</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Alejandro/puzzle/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/puzzle.png" alt="" decoding="async"></div>
+          <span class="card-title">Puzzle</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Anderson/pinta_cares/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/pinta-cares.png" alt="" decoding="async"></div>
+          <span class="card-title">Pinta Cares</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Anderson/vesteix_en_Pep/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/vesteix-pep.png" alt="" decoding="async"></div>
+          <span class="card-title">Vesteix al Pep</span>
+        </a>
+      </li>
+    </ul>
   </div>
 
   <!-- Page 2 -->
-  <div class="page-container hub-page" id="page2" data-page="2" hidden>
-    <h1 class="page-title">Jocs Interactius</h1>
-    <div class="preview-grid">
-      <a href="./Games/Artur/js/joc1/joc1.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/classifica-colors.png" alt="Classifica els Colors"></div>
-        <span class="card-title">Classifica els Colors</span>
-      </a>
-      <a href="./Games/Artur/js/joc2/joc2.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/atrapa-animal.png" alt="Atrapa l'Animal"></div>
-        <span class="card-title">Atrapa l'Animal</span>
-      </a>
-      <a href="./Games/Hatim/Interaccion/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/on-viuen-animals.png" alt="On viuen els animals"></div>
-        <span class="card-title">On viuen els animals</span>
-      </a>
-      <a href="./Games/IvanT/Canvas/canvas.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/troba-pilota.png" alt="Troba la pilota"></div>
-        <span class="card-title">Troba la pilota</span>
-      </a>
-      <a href="./Games/IvanT/Drag&Drop/drag&drop.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/correspon-paraules.png" alt="Correspon les paraules"></div>
-        <span class="card-title">Correspon les paraules</span>
-      </a>
-      <a href="./Games/Pau/puzle/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/puzzle-pingui.png" alt="Puzzle pingüí"></div>
-        <span class="card-title">Puzzle pingüí</span>
-      </a>
-    </div>
+  <div class="page-container hub-page" id="page2" data-page="2" hidden role="region" aria-labelledby="page2-title">
+    <h1 class="page-title" id="page2-title">Jocs Interactius</h1>
+    <ul class="preview-grid">
+      <li>
+        <a href="./Games/Artur/js/joc1/joc1.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/classifica-colors.png" alt="" decoding="async"></div>
+          <span class="card-title">Classifica els Colors</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Artur/js/joc2/joc2.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/atrapa-animal.png" alt="" decoding="async"></div>
+          <span class="card-title">Atrapa l'Animal</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Hatim/Interaccion/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/on-viuen-animals.png" alt="" decoding="async"></div>
+          <span class="card-title">On viuen els animals</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/IvanT/Canvas/canvas.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/troba-pilota.png" alt="" decoding="async"></div>
+          <span class="card-title">Troba la pilota</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/IvanT/Drag&Drop/drag&drop.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/correspon-paraules.png" alt="" decoding="async"></div>
+          <span class="card-title">Correspon les paraules</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Pau/puzzle/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/puzzle-pingui.png" alt="" decoding="async"></div>
+          <span class="card-title">Puzzle pingüí</span>
+        </a>
+      </li>
+    </ul>
   </div>
 
   <!-- Page 3 -->
-  <div class="page-container hub-page" id="page3" data-page="3" hidden>
-    <h1 class="page-title">Jocs Interactius</h1>
-    <div class="preview-grid">
-      <a href="./Games/Yoel/memori/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/joc-memoria.png" alt="Joc de memòria"></div>
-        <span class="card-title">Joc de memòria</span>
-      </a>
-      <a href="./Games/Yoel/puzzle-fotos/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/puzles-fotos.png" alt="Puzles de fotos"></div>
-        <span class="card-title">Puzles de fotos</span>
-      </a>
-      <a href="./Games/Eduardo/drag and drop/menu/menu.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/joc-memoria-esports.png" alt="Joc de memòria d'esports"></div>
-        <span class="card-title">Joc de memòria d'esports</span>
-      </a>
-      <a href="./Games/Izan/Relacionar Objeto/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/relacionar-objectes.png" alt="Relacionar objectes"></div>
-        <span class="card-title">Relacionar objectes</span>
-      </a>
-      <a href="./Games/Izan/Platos/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Games/Izan/Platos/plato.png" alt="Platos"></div>
-        <span class="card-title">Platos</span>
-      </a>
-      <a href="./Games/Laia/atrapa la fruta/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/atrapa-la-fruta.png" alt="Atrapa la fruta"></div>
-        <span class="card-title">Atrapa la fruta</span>
-      </a>
-    </div>
+  <div class="page-container hub-page" id="page3" data-page="3" hidden role="region" aria-labelledby="page3-title">
+    <h1 class="page-title" id="page3-title">Jocs Interactius</h1>
+    <ul class="preview-grid">
+      <li>
+        <a href="./Games/Yoel/memori/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/joc-memoria.png" alt="" decoding="async"></div>
+          <span class="card-title">Joc de memòria</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Yoel/puzzle-fotos/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/puzzles-fotos.png" alt="" decoding="async"></div>
+          <span class="card-title">Puzzles de fotos</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Eduardo/drag and drop/menu/menu.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/joc-memoria-esports.png" alt="" decoding="async"></div>
+          <span class="card-title">Joc de memòria d'esports</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Izan/Relacionar Objeto/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/relacionar-objectes.png" alt="" decoding="async"></div>
+          <span class="card-title">Relacionar objectes</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Izan/Platos/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Games/Izan/Platos/plato.png" alt="" decoding="async"></div>
+          <span class="card-title">Plats</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Games/Laia/atrapa la fruta/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/atrapa-la-fruta.png" alt="" decoding="async"></div>
+          <span class="card-title">Atrapa la fruta</span>
+        </a>
+      </li>
+    </ul>
   </div>
 
   <!-- Page 4 -->
-  <div class="page-container hub-page" id="page4" data-page="4" hidden>
-    <h1 class="page-title">Jocs Interactius</h1>
-    <div class="preview-grid">
-      <a href="./Games/Laia/conecta puntos/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/conecta-puntos.png" alt="Conecta Puntos"></div>
-        <span class="card-title">Conecta Puntos</span>
-      </a>
-    </div>
+  <div class="page-container hub-page" id="page4" data-page="4" hidden role="region" aria-labelledby="page4-title">
+    <h1 class="page-title" id="page4-title">Jocs Interactius</h1>
+    <ul class="preview-grid">
+      <li>
+        <a href="./Games/Laia/conecta puntos/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/conecta-puntos.png" alt="" decoding="async"></div>
+          <span class="card-title">Conecta punts</span>
+        </a>
+      </li>
+    </ul>
   </div>
 
   <!-- Page 5 - Videos -->
-  <div class="page-container hub-page" id="page5" data-page="5" hidden>
-    <h1 class="page-title">Videos Estimulatius</h1>
-    <div class="preview-grid">
-      <a href="./Estimulacio/Hatim/Estimulacio/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/explora.png" alt="Explora"></div>
-        <span class="card-title">Explora</span>
-      </a>
-      <a href="./Estimulacio/Pau/videos/index.html" class="preview-card">
-        <div class="preview-image"><img src="./Capturas/quatre-estacions.png" alt="Quatre estacions"></div>
-        <span class="card-title">Quatre estacions</span>
-      </a>
-    </div>
+  <div class="page-container hub-page" id="page5" data-page="5" hidden role="region" aria-labelledby="page5-title">
+    <h1 class="page-title" id="page5-title">Videos Estimulatius</h1>
+    <ul class="preview-grid">
+      <li>
+        <a href="./Estimulacio/Hatim/Estimulacio/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/explora.png" alt="" decoding="async"></div>
+          <span class="card-title">Explora</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Estimulacio/Pau/videos/index.html" class="preview-card">
+          <div class="preview-image"><img src="./Capturas/quatre-estacions.png" alt="" decoding="async"></div>
+          <span class="card-title">Quatre estacions</span>
+        </a>
+      </li>
+    </ul>
   </div>
+  </main>
 
-  <a href="./index.html#page1" id="nav-arrow-left" class="nav-arrow left" hidden aria-label="Pàgina anterior">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-  </a>
-  <a href="./index.html#page2" id="nav-arrow-right" class="nav-arrow right" aria-label="Pàgina següent">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </a>
+  <nav class="pager-nav" aria-label="Canviar pàgina del menú">
+    <a href="./index.html#page5" id="nav-arrow-left" class="nav-arrow left"
+       aria-label="Pàgina anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <a href="./index.html#page2" id="nav-arrow-right" class="nav-arrow right"
+       aria-label="Pàgina següent">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
 
   <script>
     (function() {
@@ -157,6 +220,10 @@
         return PAGES.indexOf(hash) >= 0 ? hash : 'page1';
       }
 
+      function pageStatusMessage(pageId) {
+        return pageId === 'page5' ? 'Videos Estimulatius' : 'Jocs Interactius';
+      }
+
       function showPage(pageId) {
         PAGES.forEach(function(id) {
           var el = document.getElementById(id);
@@ -164,15 +231,43 @@
         });
         var left = document.getElementById('nav-arrow-left');
         var right = document.getElementById('nav-arrow-right');
-        var n = PAGES.indexOf(pageId) + 1;
+        var idx = PAGES.indexOf(pageId);
+        var prevId = idx <= 0 ? PAGES[PAGES.length - 1] : PAGES[idx - 1];
+        var nextId = idx >= PAGES.length - 1 ? PAGES[0] : PAGES[idx + 1];
         if (left) {
-          left.hidden = n <= 1;
-          left.href = './index.html#' + (n > 1 ? PAGES[n - 2] : PAGES[0]);
+          left.href = './index.html#' + prevId;
         }
         if (right) {
-          right.hidden = n >= 5;
-          right.href = './index.html#' + (n < 5 ? PAGES[n] : PAGES[4]);
+          right.href = './index.html#' + nextId;
         }
+
+        var navJocs = document.getElementById('nav-jocs');
+        var navVideos = document.getElementById('nav-videos');
+        if (navJocs && navVideos) {
+          if (pageId === 'page5') {
+            navVideos.setAttribute('aria-current', 'page');
+            navJocs.removeAttribute('aria-current');
+          } else {
+            navJocs.setAttribute('aria-current', 'page');
+            navVideos.removeAttribute('aria-current');
+          }
+        }
+
+        var statusEl = document.getElementById('page-status');
+        if (statusEl) {
+          statusEl.textContent = pageStatusMessage(pageId);
+        }
+
+        var dots = document.querySelectorAll('.page-dot');
+        dots.forEach(function(dot) {
+          var t = dot.getAttribute('data-target');
+          if (t === pageId) {
+            dot.setAttribute('aria-current', 'page');
+          } else {
+            dot.removeAttribute('aria-current');
+          }
+        });
+
         document.title = TITLES[pageId] || document.title;
       }
 

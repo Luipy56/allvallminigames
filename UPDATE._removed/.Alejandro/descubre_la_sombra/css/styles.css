@@ -13,34 +13,6 @@ body {
     padding: 12px;
     background-color: #f3f6ee;
 }
-
-#home {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    height: 72px;
-    width: 72px;
-    border-radius: 100%;
-    border: 3px solid #3aa85b;
-    padding: 14px;
-    background-color: rgba(243, 246, 238, 0.92);
-    box-shadow: 0 4px 14px rgba(47, 77, 38, 0.15);
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#home:hover {
-    transition: 0.25s ease;
-    transform: scale(1.05);
-    background-color: #fff;
-}
-#home svg {
-    width: 28px;
-    height: 28px;
-    color: #2f4d26;
-}
 .container {
     display: flex;
     flex-direction: row;
@@ -244,6 +216,15 @@ body {
     }
 }
 
+#return-arrow {
+    position: absolute;
+    bottom: 10%;
+    left: 16%;
+}
+#return-arrow img {
+    width: 100px;
+}
+
 @media (max-width: 1024px) {
     .container {
         height: 65vh;
@@ -257,22 +238,15 @@ body {
         width: clamp(150px, 26vw, 260px);
     }
 
-    #home {
-        top: 14px;
-        left: 14px;
-        width: 62px;
-        height: 62px;
-        padding: 11px;
-    }
-    #home svg {
-        width: 24px;
-        height: 24px;
+    #return-arrow {
+        left: 6%;
+        bottom: 6%;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 10px 10px 80px;
     }
 
     .container {
@@ -313,16 +287,15 @@ body {
         margin-bottom: 12px;
     }
 
-    #home {
-        top: 10px;
-        left: 10px;
-        width: 54px;
-        height: 54px;
-        padding: 9px;
+    #return-arrow {
+        position: fixed;
+        left: 12px;
+        bottom: 12px;
+        z-index: 20;
     }
-    #home svg {
-        width: 22px;
-        height: 22px;
+
+    #return-arrow img {
+        width: 64px;
     }
 
     #win-gif,
@@ -365,5 +338,9 @@ body {
 
     .instructions-video-container {
         max-width: 230px;
+    }
+
+    #return-arrow img {
+        width: 54px;
     }
 }
