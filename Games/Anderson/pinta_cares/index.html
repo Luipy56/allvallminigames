@@ -3,68 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinta Cares - Fundació</title>
+    <title>Pinta Cares</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="../../../index.html#page1">
-        <button type="button" id="home" aria-label="Enrere">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M261.56 101.28a8 8 0 0 0-11.06 0L66.4 277.15a8 8 0 0 0-2.47 5.79L63.9 448a32 32 0 0 0 32 32H192a16 16 0 0 0 16-16V328a8 8 0 0 1 8-8h80a8 8 0 0 1 8 8v136a16 16 0 0 0 16 16h96.06a32 32 0 0 0 32-32V282.94a8 8 0 0 0-2.47-5.79Z"/><path fill="currentColor" d="m490.91 244.15l-74.8-71.56V64a16 16 0 0 0-16-16h-48a16 16 0 0 0-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0 0 43 267.56L250.5 69.28a8 8 0 0 1 11.06 0l207.52 198.28a16 16 0 0 0 22.59-.44c6.14-6.36 5.63-16.86-.76-22.97"/></svg>
-        </button>
-    </a>
-    <div class="joc_container">
-        <div class="capcelera">
-            <h1>🎨 PINTA CARES 🎨</h1>
-        </div>
 
-        <div class="joc_principal">
-            <div class="canvas_container">
-                <h2>LA CARA</h2>
-                <canvas id="canvas_cara" width="600" height="600"></canvas>
-            </div>
+<a href="../../../index.html#page1">
+    <button type="button" id="home" aria-label="Enrere">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M261.56 101.28a8 8 0 0 0-11.06 0L66.4 277.15a8 8 0 0 0-2.47 5.79L63.9 448a32 32 0 0 0 32 32H192a16 16 0 0 0 16-16V328a8 8 0 0 1 8-8h80a8 8 0 0 1 8 8v136a16 16 0 0 0 16 16h96.06a32 32 0 0 0 32-32V282.94a8 8 0 0 0-2.47-5.79Z"/><path fill="currentColor" d="m490.91 244.15l-74.8-71.56V64a16 16 0 0 0-16-16h-48a16 16 0 0 0-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0 0 43 267.56L250.5 69.28a8 8 0 0 1 11.06 0l207.52 198.28a16 16 0 0 0 22.59-.44c6.14-6.36 5.63-16.86-.76-22.97"/></svg>
+    </button>
+</a>
 
-            <div class="eines_container">
-                <h2>EINES</h2>
-                
-                <!-- Colors GRANS -->
-                <div class="colors_container" id="colors_container">
-                    <div class="color_grup">
-                        <h3>COLORS</h3>
-                        <div class="colors_graella">
-                            <button class="color_boto color_vermell" id="color_vermell"></button>
-                            <button class="color_boto color_blau" id="color_blau"></button>
-                            <button class="color_boto color_groc" id="color_groc"></button>
-                            <button class="color_boto color_verd" id="color_verd"></button>
-                            <button class="color_boto color_taronja" id="color_taronja"></button>
-                            <button class="color_boto color_lila" id="color_lila"></button>
-                            <button class="color_boto color_blanc" id="color_blanc"></button>
-                            <button class="color_boto color_negre" id="color_negre"></button>
-                        </div>
-                    </div>
-                </div>
+<div class="joc_container">
 
-                <div class="grandaria_container">
-                    <h3>GRANDÀRIA</h3>
-                    <div class="grandaria_controls">
-                        <button class="boto_grandaria" id="pinzell_petit">🤏 PETIT</button>
-                        <button class="boto_grandaria" id="pinzell_mitja">✋ MITJÀ</button>
-                        <button class="boto_grandaria" id="pinzell_gran">👍 GRAN</button>
-                    </div>
-                    <div class="pinzell_exemple" id="pinzell_exemple"></div>
-                </div>
-
-                <div class="accions_container">
-                    <h3>ACCIONS</h3>
-                    <div class="accions_controls">
-                        <button class="boto_accio" id="netejar_canvas">
-                            🧽 NETEJAR
-                        </button>    
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="capcelera">
+        <h1>🎨 PINTA CARES</h1>
     </div>
 
-    <script src="script.js"></script>
+    <div class="joc_principal">
+
+        <div class="canvas_container">
+            <canvas id="canvas_cara" width="300" height="150"></canvas>
+        </div>
+
+        <div class="eines_container">
+            <div class="colors_graella">
+                <button id="color_vermell" class="color_boto color_vermell" type="button"></button>
+                <button id="color_blau" class="color_boto color_blau" type="button"></button>
+                <button id="color_groc" class="color_boto color_groc" type="button"></button>
+                <button id="color_verd" class="color_boto color_verd" type="button"></button>
+                <button id="color_taronja" class="color_boto color_taronja" type="button"></button>
+                <button id="color_lila" class="color_boto color_lila" type="button"></button>
+                <button id="color_blanc" class="color_boto color_blanc" type="button"></button>
+                <button id="color_negre" class="color_boto color_negre" type="button"></button>
+            </div>
+
+            <button id="netejar_canvas" class="boto_accio" type="button">🧽 BORRAR TODO</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
