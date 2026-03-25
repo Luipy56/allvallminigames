@@ -14,26 +14,29 @@
   <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
 
   <header class="site-header">
-    <nav class="top-nav" aria-label="Triar secció: jocs o vídeos">
-      <a href="./index.html#page5" class="nav-link" id="nav-videos">Videos Estimulatius</a>
-      <a href="./index.html#page1" class="nav-link" id="nav-jocs">Jocs Interactius</a>
-    </nav>
+    <div class="site-header-inner">
+      <nav class="top-nav top-nav--videos" aria-label="Videos estimulatius">
+        <a href="./index.html#page5" class="nav-link" id="nav-videos">Videos Estimulatius</a>
+      </nav>
+      <nav class="page-dots" id="page-dots" aria-label="Trieu la pàgina del menú (1 a 5)">
+        <a href="./index.html#page1" class="page-dot" data-target="page1"><span class="visually-hidden">Menú pàgina 1, jocs</span><span class="page-dot-num" aria-hidden="true">1</span></a>
+        <a href="./index.html#page2" class="page-dot" data-target="page2"><span class="visually-hidden">Menú pàgina 2, jocs</span><span class="page-dot-num" aria-hidden="true">2</span></a>
+        <a href="./index.html#page3" class="page-dot" data-target="page3"><span class="visually-hidden">Menú pàgina 3, jocs</span><span class="page-dot-num" aria-hidden="true">3</span></a>
+        <a href="./index.html#page4" class="page-dot" data-target="page4"><span class="visually-hidden">Menú pàgina 4, jocs</span><span class="page-dot-num" aria-hidden="true">4</span></a>
+        <a href="./index.html#page5" class="page-dot" data-target="page5"><span class="visually-hidden">Menú pàgina 5, vídeos</span><span class="page-dot-num" aria-hidden="true">5</span></a>
+      </nav>
+      <nav class="top-nav top-nav--jocs" aria-label="Jocs interactius">
+        <a href="./index.html#page1" class="nav-link" id="nav-jocs">Jocs Interactius</a>
+      </nav>
+    </div>
   </header>
 
   <div id="page-status" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <main id="main-content" tabindex="-1">
-  <nav class="page-dots" id="page-dots" aria-label="Trieu la pàgina del menú (1 a 5)">
-    <a href="./index.html#page1" class="page-dot" data-target="page1"><span class="visually-hidden">Menú pàgina 1, jocs</span><span class="page-dot-num" aria-hidden="true">1</span></a>
-    <a href="./index.html#page2" class="page-dot" data-target="page2"><span class="visually-hidden">Menú pàgina 2, jocs</span><span class="page-dot-num" aria-hidden="true">2</span></a>
-    <a href="./index.html#page3" class="page-dot" data-target="page3"><span class="visually-hidden">Menú pàgina 3, jocs</span><span class="page-dot-num" aria-hidden="true">3</span></a>
-    <a href="./index.html#page4" class="page-dot" data-target="page4"><span class="visually-hidden">Menú pàgina 4, jocs</span><span class="page-dot-num" aria-hidden="true">4</span></a>
-    <a href="./index.html#page5" class="page-dot" data-target="page5"><span class="visually-hidden">Menú pàgina 5, vídeos</span><span class="page-dot-num" aria-hidden="true">5</span></a>
-  </nav>
-
   <!-- Page 1 -->
   <div class="page-container hub-page" id="page1" data-page="1" role="region" aria-labelledby="page1-title">
-    <h1 class="page-title" id="page1-title">Jocs Interactius</h1>
+    <h1 class="page-title visually-hidden" id="page1-title">Jocs Interactius</h1>
     <ul class="preview-grid">
       <li>
         <a href="./Games/Ruben/mapapirata/index.html" class="preview-card">
@@ -76,7 +79,7 @@
 
   <!-- Page 2 -->
   <div class="page-container hub-page" id="page2" data-page="2" hidden role="region" aria-labelledby="page2-title">
-    <h1 class="page-title" id="page2-title">Jocs Interactius</h1>
+    <h1 class="page-title visually-hidden" id="page2-title">Jocs Interactius</h1>
     <ul class="preview-grid">
       <li>
         <a href="./Games/Artur/js/joc1/joc1.html" class="preview-card">
@@ -119,7 +122,7 @@
 
   <!-- Page 3 -->
   <div class="page-container hub-page" id="page3" data-page="3" hidden role="region" aria-labelledby="page3-title">
-    <h1 class="page-title" id="page3-title">Jocs Interactius</h1>
+    <h1 class="page-title visually-hidden" id="page3-title">Jocs Interactius</h1>
     <ul class="preview-grid">
       <li>
         <a href="./Games/Yoel/memori/index.html" class="preview-card">
@@ -162,7 +165,7 @@
 
   <!-- Page 4 -->
   <div class="page-container hub-page" id="page4" data-page="4" hidden role="region" aria-labelledby="page4-title">
-    <h1 class="page-title" id="page4-title">Jocs Interactius</h1>
+    <h1 class="page-title visually-hidden" id="page4-title">Jocs Interactius</h1>
     <ul class="preview-grid">
       <li>
         <a href="./Games/Laia/conecta puntos/index.html" class="preview-card">
@@ -175,7 +178,7 @@
 
   <!-- Page 5 - Videos -->
   <div class="page-container hub-page" id="page5" data-page="5" hidden role="region" aria-labelledby="page5-title">
-    <h1 class="page-title" id="page5-title">Videos Estimulatius</h1>
+    <h1 class="page-title visually-hidden" id="page5-title">Videos Estimulatius</h1>
     <ul class="preview-grid">
       <li>
         <a href="./Estimulacio/Hatim/Estimulacio/index.html" class="preview-card">

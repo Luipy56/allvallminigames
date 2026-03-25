@@ -6,6 +6,8 @@
   --accent-solid: oklch(0.62 0.19 58);
   --focus-ring: oklch(0.35 0.15 264);
   --ink-soft: #4a453d;
+  /* Una fila: videos | punts | jocs; es recalcula si es trenca a 2 files */
+  --hub-below-safe: 102px;
 }
 
 .hub-page[hidden] {
@@ -52,6 +54,7 @@
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Nunito", "Inter", sans-serif;
   background: linear-gradient(
     165deg,
@@ -62,8 +65,9 @@ body {
   );
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  overflow-x: hidden;
 }
 
 main#main-content {
@@ -71,11 +75,19 @@ main#main-content {
   max-width: 1100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 80px 12px 100px;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(
+    100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
+  );
+  padding: calc(env(safe-area-inset-top, 0px) + var(--hub-below-safe)) 12px
+    max(12px, env(safe-area-inset-bottom, 0px));
   outline: none;
   gap: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 
 main#main-content:focus-visible {
@@ -90,9 +102,33 @@ main#main-content:focus-visible {
   right: 0;
   z-index: 1000;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 8px) max(12px, env(safe-area-inset-right, 0px)) 10px
+    max(12px, env(safe-area-inset-left, 0px));
+  background: rgba(255, 248, 240, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 16px rgba(230, 130, 50, 0.1);
 }
 
-.site-header .top-nav {
+/* Mateixa fila: videos, punts 1–5, «Jocs Interactius» a la dreta dels punts */
+.site-header-inner {
+  pointer-events: none;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 14px;
+}
+
+.site-header-inner .top-nav,
+.site-header-inner .page-dots {
   pointer-events: auto;
 }
 
@@ -111,16 +147,20 @@ main#main-content:focus-visible {
   line-height: 1.2;
 }
 
-/* Numbered page dots */
+/* Numbered page dots (fixats dalt dins .site-header) */
 .page-dots {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.88);
+  gap: 10px;
+  margin: 0;
+  width: fit-content;
+  max-width: 100%;
+  flex: 0 1 auto;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(230, 140, 60, 0.12);
   border: 1px solid rgba(255, 180, 100, 0.35);
@@ -132,8 +172,8 @@ main#main-content:focus-visible {
   justify-content: center;
   min-width: 52px;
   min-height: 52px;
-  padding: 8px;
-  border-radius: 14px;
+  padding: 6px 8px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 800;
   font-size: 1.2rem;
@@ -289,15 +329,17 @@ a.preview-card:hover .card-title {
   right: 16px;
 }
 
-/* Top Left Navigation */
+/* Top navigation (dins header fix, ja no position:fixed sol) */
 .top-nav {
-  position: fixed;
-  top: 15px;
-  left: 15px;
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  z-index: 1000;
+  gap: 8px 12px;
+  z-index: 1;
+  justify-content: flex-start;
+  width: auto;
+  flex: 0 1 auto;
 }
 
 .top-nav a {
@@ -396,7 +438,24 @@ a.preview-card:hover .card-title {
   }
 }
 
+/* Capçalera en dues files: tot centrat */
+@media (max-width: 720px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  :root {
+    --hub-below-safe: 192px;
+  }
+}
+
 @media (max-width: 700px) {
+  :root {
+    --hub-below-safe: 198px;
+  }
+
   ul.preview-grid {
     grid-template-columns: 1fr;
   }
@@ -413,12 +472,35 @@ a.preview-card:hover .card-title {
 
   .page-dots {
     gap: 10px;
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
 
   .page-dots a.page-dot {
     min-width: 48px;
     min-height: 48px;
     font-size: 1.1rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --hub-below-safe: 228px;
+  }
+
+  .page-dots {
+    gap: 8px;
+  }
+
+  .page-dots a.page-dot {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1rem;
+    padding: 6px;
   }
 }

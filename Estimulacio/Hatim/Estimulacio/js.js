@@ -3,7 +3,6 @@ const paginaNaturaleza = document.querySelector(".paginaNaturaleza");
 const paginaCiudad = document.querySelector(".paginaCiudad");
 const videoContainer = document.querySelector(".videoContainer");
 const video = document.getElementById("video");
-const botonInicio = document.querySelector(".inicio");
 
 const botonesCategoria = document.querySelectorAll("[data-info]");
 const botonesVideo = document.querySelectorAll("[data-video]");
@@ -34,11 +33,6 @@ botonesCategoria.forEach(boton => {
         if (info === "ciudad") {
             paginaCiudad.classList.remove("hidden");
             paginaCiudad.classList.add("display");
-        }
-
-        if (info === "inicio") {
-            pagina1.classList.remove("hidden");
-            video.src = "";
         }
     });
 });

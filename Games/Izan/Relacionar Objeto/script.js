@@ -8,16 +8,8 @@ const container = document.querySelector(".objects");
 const items = document.querySelectorAll(".item");
 const boxes = document.querySelectorAll(".box");
 
-const volverBtn = document.getElementById("volverMenu");
 const dragHint = document.querySelector(".drag-hint");
 const victory = document.getElementById("victory");
-
-if (volverBtn) {
-    volverBtn.addEventListener("click", function() {
-        window.location.href = "menu.html";
-    });
-}
-
 
 window.addEventListener("DOMContentLoaded", mezclarObjetos);
 

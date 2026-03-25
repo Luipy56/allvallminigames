@@ -1,3 +1,32 @@
+#home {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    height: 75px;
+    width: 75px;
+    border-radius: 100%;
+    border: 3px solid #3A3A3A;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+}
+
+#home:hover {
+    transition: 1s ease-in-out;
+    transform: rotate(360deg);
+    opacity: 1;
+}
+
+#home svg {
+    width: 28px;
+    height: 28px;
+}
 
 body {
     margin: 0;
@@ -15,37 +44,40 @@ body {
 }
 
 
-canvas {
-    border: 3px solid #333;
-    background-color: #ffffff;
+.game-shell {
+    position: relative;
+    display: inline-block;
     margin-top: 40px;
+    vertical-align: top;
+    overflow: hidden;
+}
 
-    
+/* Textura Arabescato Corchia (encimera), lleument desenfocada (darrere el canvas) */
+.canvas-marble-bg {
+    position: absolute;
+    z-index: 0;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    pointer-events: none;
+    background-color: #f0f0f2;
+    background-image: url('marble-bg.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.25px);
+    transform: scale(1.05);
+    transform-origin: center;
+}
+
+canvas {
+    position: relative;
+    z-index: 1;
+    border: 3px solid #333;
+    background-color: transparent;
+    display: block;
     cursor: none;
 }
-
-button {
-    padding: 12px 30px;
-    font-size: 18px;
-    margin-top: 15px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #1279ff, #6bd9fa);
-    color: white;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
 
 #victory {
     position: fixed;
@@ -53,7 +85,7 @@ button:active {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    z-index: 1000;
+    z-index: 1200;
 }
 
 #victory img {
@@ -62,12 +94,11 @@ button:active {
 
 .sponge-hint {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     transform: translate(-50%, -50%);
-    z-index: 2000;
+    z-index: 2;
     pointer-events: none;
-    transition: all 0.2s ease;
 }
 
 .sponge-hint img {

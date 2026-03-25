@@ -2,16 +2,14 @@ const lienzo = document.getElementById('gameCanvas');
 const contexto = lienzo.getContext('2d');
 const victoriaDiv = document.getElementById('victory');
 const spongeHint = document.querySelector('.sponge-hint');
+const gameShell = document.querySelector('.game-shell');
 
 let platosLimpios = 0;
 const MAX_PLATOS = 4;
 let platoActual = null;
 
 const imagenPlato = new Image();
-imagenPlato.src = 'platillo.png';  
-
-const volverBtn = document.getElementById("volverMenu");
-volverBtn.addEventListener("click", () => window.location.href = "menu.html");
+imagenPlato.src = 'platillo.png';
 
 const RADIO_PLATO = 80;
 const CANTIDAD_SUCIEDAD = 40;
@@ -71,13 +69,16 @@ function dibujarPlato() {
 /* Limpiar automáticamente al pasar el ratón + seguir esponja */
 lienzo.addEventListener('mousemove', (e) => {
     const rect = lienzo.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
+    const scaleX = lienzo.width / rect.width;
+    const scaleY = lienzo.height / rect.height;
+    const mx = (e.clientX - rect.left) * scaleX;
+    const my = (e.clientY - rect.top) * scaleY;
 
-    /* Mover esponja al ratón */
-    if (spongeHint) {
-        spongeHint.style.left = `${mx}px`;
-        spongeHint.style.top = `${my}px`;
+    /* Esponja: mismas coordenadas que el cursor, relativas al .game-shell (no al body) */
+    if (spongeHint && gameShell) {
+        const shell = gameShell.getBoundingClientRect();
+        spongeHint.style.left = `${e.clientX - shell.left}px`;
+        spongeHint.style.top = `${e.clientY - shell.top}px`;
     }
 
     if (!platoActual) return;
