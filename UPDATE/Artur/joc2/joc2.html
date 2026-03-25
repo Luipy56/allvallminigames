@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Atrapa l'Animal!</title>
+    <link rel="stylesheet" href="joc2.css">
+</head>
+<body>
+    <main>
+        <div class="interficie">
+            <h1>Atrapa l'animal</h1>
+            <img id="imgClicar" src="../imgs/hand-click-button-decoration-elements-png.png" alt="clicar">
+            <div id="puntuacio">Punts: <span>0</span></div>
+            <canvas id="meuCanvas" width="500" height="400"></canvas>
+            <p>Toca l'animal per guanyar punts</p>
+        </div>
+    </main>
+    <div id="popup-victoria" class="popup-ocult">
+        <div class="popup-contingut">
+            <h2>🎉 Felicitats! 🎉</h2>
+            <img src="../imgs/f0550b682c735483a1afc11fd815b192.gif" alt="focs">
+            <p>Has trobat tots els animals!</p>
+            <button id="restart">Jugar de nou</button>
+            <a id="menu">Tornar al menu</a>
+        </div>
+    </div>
+    <script src="joc2.js"></script>
+</body>
+</html>

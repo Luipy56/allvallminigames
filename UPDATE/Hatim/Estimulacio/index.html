@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Estimulación</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <button data-info="inicio" class="inicio" onclick="ocultarTodo()">
+        <img src="img/casa.png" alt="Casa">
+    </button>
+
+    
+    <div class="pagina1">
+        <h1>¿Qué prefieres explorar?</h1>
+        <div class="lugares">
+
+            <div class="naturaleza">
+                <h2>Naturaleza</h2>
+                <button data-info="naturaleza">
+                    <img src="img/naturaleza.jpg" alt="Naturaleza">
+                </button>
+            </div>
+
+            <div class="ciudad">
+                <h2>Ciudad</h2>
+                <button data-info="ciudad">
+                    <img src="img/ciudad.jpg" alt="Ciudad">
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <div class="paginaNaturaleza hidden">
+
+        <button data-video="https://www.youtube.com/embed/c5P_awdbVuA?si=XPxjtSA46SgSE98T">
+            <img src="img/leon.jpg" alt="León">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/F4-fzWuRUYY?si=JvKCq1ajIvCfRIob">
+            <img src="img/playa.jpg" alt="Agua">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/fOW8Y09GVek?si=8Hf0d9Vw8Pg9janG">
+            <img src="img/montaña.jpg" alt="Montaña">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/IV3zPP9uoI8?si=nHBYranhLXPJStiK">
+            <img src="img/pinguino.jpg" alt="Pingüino">
+        </button>
+    </div>
+
+    
+    <div class="paginaCiudad hidden">
+
+        <button data-video="https://www.youtube.com/embed/rugSfM5UPFI?si=TWGGjz_6vFZBzPA3">
+            <img src="img/coche.jpg" alt="Coches">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/znOCvjGwDU0?si=W8QiJCGu-PR9PvI9">
+            <img src="img/tren.jpg" alt="Tren">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/jzX8aYzCoAQ?si=0sQ13l06cOnME-RU">
+            <img src="img/medieval.jpg" alt="Castillo">
+        </button>
+
+        <button data-video="https://www.youtube.com/embed/bBTGN2VILlI?si=dbykFxOxtavICvnh">
+            <img src="img/venecia.jpg" alt="Venecia">
+        </button>
+    </div>
+
+    
+    <div class="videoContainer hidden">
+        <iframe id="video" width="800" height="450"
+            src=""
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="click">
+        <img src="img/click.gif" alt="Click">
+    </div>
+    
+    <script src="js.js"></script>
+</body>
+</html>

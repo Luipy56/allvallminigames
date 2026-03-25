@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de Colores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="drag-hint">
+        <span class="hand">🖐️</span>
+        <span class="arrow">➡️</span>
+    </div>
+
+
+    <div class="container">
+
+        
+        <div class="objects">
+            <div class="item" draggable="true" data-color="rojo">
+                <img src="etileno-manzanas.jpg" alt="Manzana">
+            </div>
+
+            <div class="item" draggable="true" data-color="amarillo">
+                <img src="sool.png" alt="Banana">
+            </div>
+
+            <div class="item" draggable="true" data-color="verde">
+                <img src="tortugas.jpg" alt="Hoja">
+            </div>
+
+            <div class="item" draggable="true" data-color="azul">
+                <img src="agua.png" alt="Agua">
+            </div>
+        </div>
+
+
+        
+        <div class="boxes">
+            <div class="box rojo" data-color="rojo">Rojo</div>
+            <div class="box amarillo" data-color="amarillo">Amarillo</div>
+            <div class="box verde" data-color="verde">Verde</div>
+            <div class="box azul" data-color="azul">Azul</div>
+        </div>
+
+    </div>
+
+    <div id="victory" style="display:none;">
+        <img src="victoria.png" alt="¡Ganaste!">
+    </div>
+
+    <button id="volverMenu"> Volver al menu</button>
+
+   
+    <svg id="arrows"></svg>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

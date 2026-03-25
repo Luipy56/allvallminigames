@@ -1,0 +1,100 @@
+body {
+    background-image: url(img/cielo.gif);
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.click{
+    display: grid;
+    justify-content: center;
+}
+
+img{
+    border-radius: 7%;
+}
+div{
+    margin-top: 3%;
+}
+.pagina1 {
+    text-align: center;
+    color: red;
+    font-size: 30px;
+}
+
+button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button img {
+    width: 50%;
+    height: 50%;
+}
+
+.lugares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.naturaleza h2 {
+    color: green;
+    text-align: center;
+}
+
+.naturaleza img {
+    width: 30vw;
+    height: 35vh;
+}
+
+.ciudad h2 {
+    color: yellow;
+    text-align: center;
+}
+
+.ciudad img {
+    width: 30vw;
+    height: 35vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.videoContainer {
+    text-align: center;
+    margin-top: 5%;
+}
+
+iframe#video {
+    width: 60vw;
+    max-width: 90%;
+    height: 65vh;
+}
+.display{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+.paginaNaturaleza img,
+.paginaCiudad img {
+    width: 30vw;
+    height: 35vh;
+}
+
+
+.inicio {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    z-index: 1000;
+}
+
+.inicio img {
+    width: 7vw;
+}
