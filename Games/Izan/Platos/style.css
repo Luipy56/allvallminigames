@@ -1,49 +1,51 @@
+
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
-}
-#home {
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    height: 75px;
-    width: 75px;
-    border-radius: 100%;
-    border: 3px solid #3A3A3A;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    opacity: 0.5;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#home:hover {
-    transition: 0.3s ease;
-    transform: scale(1.05);
-    opacity: 1;
-}
-#home svg {
-    width: 28px;
-    height: 28px;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: fondoAnimado 10s ease infinite;
 }
 
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
 canvas {
-    border: 2px solid #333;
+    border: 3px solid #333;
     background-color: #ffffff;
-    cursor: crosshair;
+    margin-top: 40px;
+
+    
+    cursor: none;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 10px;
+    padding: 12px 30px;
+    font-size: 18px;
+    margin-top: 15px;
+    border-radius: 25px;
+    border: none;
     cursor: pointer;
+    background: linear-gradient(135deg, #1279ff, #6bd9fa);
+    color: white;
+    transition: all 0.3s ease;
 }
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 
 #victory {
     position: fixed;
@@ -55,5 +57,20 @@ button {
 }
 
 #victory img {
-    width: 400px;
+    width: 500px;
+}
+
+.sponge-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.sponge-hint img {
+    width: 100px;
+    height: 100px;
 }

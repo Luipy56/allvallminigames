@@ -3,8 +3,8 @@ const caixes = document.querySelectorAll('.caixa');
 const feedback = document.getElementById('feedback');
 const restart = document.getElementById('restart');
 
-const calids=["vermell", "taronja", "groc"];
-const freds=["blau", "violeta", "verd"];
+const calids=["foc", "desert", "volca"];
+const freds=["floquetDeNeu", "gel", "ninot"];
 
 
 fitxes.forEach(fitxa => {
@@ -47,10 +47,10 @@ caixes.forEach(caixa => {
         let idFitxa = e.dataTransfer.getData('text');
         let fitxa = document.getElementById(idFitxa);
 
-        let colorCasella = e.dataTransfer.getData('text2');
+        let tipusCasella = e.dataTransfer.getData('text2');
         let casellaTipus = e.currentTarget.id;
 
-        if (colorCasella === casellaTipus) {
+        if (tipusCasella === casellaTipus) {
             caixa.appendChild(fitxa);
             feedback.innerText = "✅ Correcte! ✅";
             feedback.style.color = "green";

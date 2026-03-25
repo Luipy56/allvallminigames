@@ -2,10 +2,20 @@ body {
     background-image: url(img/cielo.gif);
     background-size: cover;
     display: grid;
-    place-items: center;
+    align-items: center;
     font-family: Arial, sans-serif;
 }
+.click{
+    display: grid;
+    justify-content: center;
+}
 
+img{
+    border-radius: 7%;
+}
+div{
+    margin-top: 3%;
+}
 .pagina1 {
     text-align: center;
     color: red;
@@ -37,8 +47,8 @@ button img {
 }
 
 .naturaleza img {
-    width: 500px;
-    height: 300px;
+    width: 30vw;
+    height: 35vh;
 }
 
 .ciudad h2 {
@@ -47,8 +57,8 @@ button img {
 }
 
 .ciudad img {
-    width: 500px;
-    height: 300px;
+    width: 30vw;
+    height: 35vh;
 }
 
 .hidden {
@@ -57,20 +67,23 @@ button img {
 
 .videoContainer {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 5%;
 }
 
 iframe#video {
-    width: 800px;
+    width: 60vw;
     max-width: 90%;
-    height: 450px;
+    height: 65vh;
 }
-
-
+.display{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+}
 .paginaNaturaleza img,
 .paginaCiudad img {
-    width: 500px;
-    height: 300px;
+    width: 30vw;
+    height: 35vh;
 }
 
 
@@ -83,5 +96,5 @@ iframe#video {
 }
 
 .inicio img {
-    width: 100%;
+    width: 7vw;
 }

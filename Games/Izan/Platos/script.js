@@ -1,41 +1,32 @@
 const lienzo = document.getElementById('gameCanvas');
 const contexto = lienzo.getContext('2d');
-const botonIniciar = document.getElementById('startBtn');
-const textoPuntaje = document.getElementById('score');
 const victoriaDiv = document.getElementById('victory');
+const spongeHint = document.querySelector('.sponge-hint');
 
 let platosLimpios = 0;
 const MAX_PLATOS = 4;
 let platoActual = null;
-let estaLimpiando = false;
-
 
 const imagenPlato = new Image();
-imagenPlato.src = 'plato.png'; 
+imagenPlato.src = 'platillo.png';  
 
 const volverBtn = document.getElementById("volverMenu");
-
-volverBtn.addEventListener("click", function() {
-    window.location.href = "menu.html";
-});
-
-botonIniciar.addEventListener('click', iniciarJuego);
-lienzo.addEventListener('mousedown', () => estaLimpiando = true);
-lienzo.addEventListener('mouseup', () => estaLimpiando = false);
-lienzo.addEventListener('mouseleave', () => estaLimpiando = false);
-lienzo.addEventListener('mousemove', limpiar);
+volverBtn.addEventListener("click", () => window.location.href = "menu.html");
 
 const RADIO_PLATO = 80;
 const CANTIDAD_SUCIEDAD = 40;
 
+/* Iniciar automáticamente */
+window.addEventListener('DOMContentLoaded', iniciarJuego);
+
 function iniciarJuego() {
     platosLimpios = 0;
-    textoPuntaje.textContent = platosLimpios;
-    botonIniciar.disabled = true;
     victoriaDiv.style.display = 'none';
+    if (spongeHint) spongeHint.style.display = 'block'; // esponja inicial visible
     siguientePlato();
 }
 
+/* Generar plato */
 function siguientePlato() {
     const margen = RADIO_PLATO + 10;
     const x = margen + Math.random() * (lienzo.width - 2 * margen);
@@ -60,6 +51,7 @@ function siguientePlato() {
     dibujarPlato();
 }
 
+/* Dibujar plato y suciedad */
 function dibujarPlato() {
     contexto.clearRect(0, 0, lienzo.width, lienzo.height);
     if (!platoActual) return;
@@ -76,35 +68,46 @@ function dibujarPlato() {
     });
 }
 
-function limpiar(e) {
-    if (!estaLimpiando || !platoActual) return;
-
+/* Limpiar automáticamente al pasar el ratón + seguir esponja */
+lienzo.addEventListener('mousemove', (e) => {
     const rect = lienzo.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
 
+    /* Mover esponja al ratón */
+    if (spongeHint) {
+        spongeHint.style.left = `${mx}px`;
+        spongeHint.style.top = `${my}px`;
+    }
+
+    if (!platoActual) return;
+
+    let cambio = false;
     platoActual.suciedad.forEach(s => {
         const dx = mx - (platoActual.x + s.x);
         const dy = my - (platoActual.y + s.y);
-        if (!s.limpio && Math.sqrt(dx*dx + dy*dy) < s.radio + 10) {
+        if (!s.limpio && Math.sqrt(dx*dx + dy*dy) < s.radio + 20) {
             s.limpio = true;
+            cambio = true;
         }
     });
 
-    dibujarPlato();
+    if (cambio) dibujarPlato();
 
     if (platoActual.suciedad.every(s => s.limpio)) {
         platosLimpios++;
-        textoPuntaje.textContent = platosLimpios;
         platoActual = null;
 
         if (platosLimpios >= MAX_PLATOS) {
-            setTimeout(() => {
-                victoriaDiv.style.display = 'block';
-                botonIniciar.disabled = false;
+            setTimeout(() => { 
+                victoriaDiv.style.display = 'block'; 
+                if (spongeHint) spongeHint.style.display = 'none';
             }, 100);
         } else {
-            setTimeout(siguientePlato, 300);
+            setTimeout(() => {
+                siguientePlato();
+                if (spongeHint) spongeHint.style.display = 'block';
+            }, 300);
         }
     }
-}
+});

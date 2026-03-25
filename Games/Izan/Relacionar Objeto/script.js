@@ -3,30 +3,43 @@ const total = 4;
 
 const scoreText = document.getElementById("score");
 const arrows = document.getElementById("arrows");
-const restartBtn = document.getElementById("restartBtn");
 
 const container = document.querySelector(".objects");
 const items = document.querySelectorAll(".item");
 const boxes = document.querySelectorAll(".box");
 
 const volverBtn = document.getElementById("volverMenu");
+const dragHint = document.querySelector(".drag-hint");
+const victory = document.getElementById("victory");
 
-volverBtn.addEventListener("click", function() {
-    window.location.href = "menu.html";
-});
+if (volverBtn) {
+    volverBtn.addEventListener("click", function() {
+        window.location.href = "menu.html";
+    });
+}
+
 
 window.addEventListener("DOMContentLoaded", mezclarObjetos);
 
 function mezclarObjetos() {
+    if (!container) return;
+
     const objetos = Array.from(container.children);
     objetos.sort(() => Math.random() - 0.5);
+
     container.innerHTML = "";
     objetos.forEach(obj => container.appendChild(obj));
 }
 
 
 items.forEach(item => {
+
     item.addEventListener("dragstart", dragStart);
+
+    
+    item.addEventListener("dragstart", () => {
+        if (dragHint) dragHint.style.display = "none";
+    });
 });
 
 boxes.forEach(box => {
@@ -34,11 +47,9 @@ boxes.forEach(box => {
     box.addEventListener("drop", dropItem);
 });
 
-
 function dragStart(e) {
     e.dataTransfer.setData("color", e.target.dataset.color);
 }
-
 
 function dropItem(e) {
     e.preventDefault();
@@ -50,20 +61,24 @@ function dropItem(e) {
 
         const item = document.querySelector(`.item[data-color='${itemColor}']`);
 
+        if (!item) return;
+
         drawArrow(item, e.target);
 
         item.draggable = false;
         score++;
         scoreText.textContent = score;
 
-        if (score === total) { setTimeout(() => {
-        const victory = document.getElementById("victory");
-        victory.style.display = "flex";  
-    }, 300);
-}
+        
+        if (score === total) {
+            setTimeout(() => {
+                if (victory) {
+                    victory.style.display = "flex";
+                }
+            }, 300);
+        }
     }
 }
-
 
 function drawArrow(from, to) {
 
@@ -82,22 +97,8 @@ function drawArrow(from, to) {
     arrows.appendChild(line);
 }
 
-
-restartBtn.addEventListener("click", reiniciarJuego);
-
-function reiniciarJuego() {
-
-    score = 0;
-    scoreText.textContent = score;
-
-    arrows.innerHTML = "";
-
-    items.forEach(item => {
-        item.draggable = true;
-        container.appendChild(item);
+if (victory) {
+    victory.addEventListener("click", () => {
+        victory.style.display = "none";
     });
-
-    mezclarObjetos();
-
-    restartBtn.style.display = "none";
 }

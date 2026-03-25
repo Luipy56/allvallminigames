@@ -10,8 +10,11 @@ const botonesVideo = document.querySelectorAll("[data-video]");
 
 
 function ocultarTodo() {
+    pagina1.classList.remove("display");
     pagina1.classList.add("hidden");
+    paginaNaturaleza.classList.remove("display");
     paginaNaturaleza.classList.add("hidden");
+    paginaCiudad.classList.remove("display");
     paginaCiudad.classList.add("hidden");
     videoContainer.classList.add("hidden");
 }
@@ -25,10 +28,12 @@ botonesCategoria.forEach(boton => {
 
         if (info === "naturaleza") {
             paginaNaturaleza.classList.remove("hidden");
+            paginaNaturaleza.classList.add("display");
         }
 
         if (info === "ciudad") {
             paginaCiudad.classList.remove("hidden");
+            paginaCiudad.classList.add("display");
         }
 
         if (info === "inicio") {
