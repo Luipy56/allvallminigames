@@ -1,3 +1,39 @@
+#home-link {
+  text-decoration: none;
+}
+
+#home {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  height: 56px;
+  width: 56px;
+  max-width: none;
+  margin: 0;
+  border-radius: 50%;
+  border: 3px solid #3a3a3a;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #222;
+  cursor: pointer;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0;
+}
+
+#home:hover,
+#home:focus-visible {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+#home svg {
+  width: 26px;
+  height: 26px;
+}
 
 body {
   background-image: url(img/cielo.gif);
@@ -54,6 +90,7 @@ button {
   width: 220px;
   height: auto;
   cursor: grab;
+  touch-action: none;
   transition: all 0.3s ease;
 }
 
@@ -67,6 +104,7 @@ button {
 }
 
 .habitat {
+  touch-action: none;
   width: 30vw;
   height: 45vh;
   border: 3px solid #fff;

@@ -23,57 +23,25 @@ function mezclarObjetos() {
     objetos.forEach(obj => container.appendChild(obj));
 }
 
-
-items.forEach(item => {
-
-    item.addEventListener("dragstart", dragStart);
-
-    
-    item.addEventListener("dragstart", () => {
-        if (dragHint) dragHint.style.display = "none";
-    });
-});
-
-boxes.forEach(box => {
-    box.addEventListener("dragover", e => e.preventDefault());
-    box.addEventListener("drop", dropItem);
-});
-
-function dragStart(e) {
-    e.dataTransfer.setData("color", e.target.dataset.color);
+function clearDragStyles(el) {
+    el.style.position = "";
+    el.style.left = "";
+    el.style.top = "";
+    el.style.width = "";
+    el.style.height = "";
+    el.style.zIndex = "";
+    el.style.touchAction = "";
 }
 
-function dropItem(e) {
-    e.preventDefault();
-
-    const itemColor = e.dataTransfer.getData("color");
-    const boxColor = e.target.dataset.color;
-
-    if (itemColor === boxColor) {
-
-        const item = document.querySelector(`.item[data-color='${itemColor}']`);
-
-        if (!item) return;
-
-        drawArrow(item, e.target);
-
-        item.draggable = false;
-        score++;
-        scoreText.textContent = score;
-
-        
-        if (score === total) {
-            setTimeout(() => {
-                if (victory) {
-                    victory.style.display = "flex";
-                }
-            }, 300);
-        }
-    }
+function elementUnderPoint(clientX, clientY, dragEl) {
+    const prev = dragEl.style.pointerEvents;
+    dragEl.style.pointerEvents = "none";
+    const under = document.elementFromPoint(clientX, clientY);
+    dragEl.style.pointerEvents = prev;
+    return under;
 }
 
 function drawArrow(from, to) {
-
     const rect1 = from.getBoundingClientRect();
     const rect2 = to.getBoundingClientRect();
 
@@ -88,6 +56,90 @@ function drawArrow(from, to) {
 
     arrows.appendChild(line);
 }
+
+let drag = null;
+
+items.forEach(item => {
+    item.draggable = false;
+
+    item.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0) return;
+        if (item.dataset.matched === "1") return;
+        e.preventDefault();
+        try {
+            item.setPointerCapture(e.pointerId);
+        } catch (_) {}
+
+        if (dragHint) dragHint.style.display = "none";
+
+        const r = item.getBoundingClientRect();
+        drag = {
+            el: item,
+            pointerId: e.pointerId,
+            offsetX: e.clientX - r.left,
+            offsetY: e.clientY - r.top,
+            parent: item.parentNode,
+            next: item.nextSibling,
+        };
+
+        item.style.position = "fixed";
+        item.style.left = r.left + "px";
+        item.style.top = r.top + "px";
+        item.style.width = r.width + "px";
+        item.style.height = r.height + "px";
+        item.style.zIndex = "10000";
+        item.style.touchAction = "none";
+    });
+
+    item.addEventListener("pointermove", (e) => {
+        if (!drag || drag.el !== item || drag.pointerId !== e.pointerId) return;
+        e.preventDefault();
+        item.style.left = e.clientX - drag.offsetX + "px";
+        item.style.top = e.clientY - drag.offsetY + "px";
+    });
+
+    function endDrag(e) {
+        if (!drag || drag.el !== item || drag.pointerId !== e.pointerId) return;
+        e.preventDefault();
+        if (item.hasPointerCapture(e.pointerId)) {
+            item.releasePointerCapture(e.pointerId);
+        }
+
+        const itemColor = item.dataset.color;
+        const under = elementUnderPoint(e.clientX, e.clientY, item);
+        const box = under && under.closest(".box");
+        const boxColor = box && box.dataset.color;
+
+        let matched = false;
+        if (box && itemColor === boxColor) {
+            matched = true;
+            drawArrow(item, box);
+            item.dataset.matched = "1";
+            score++;
+            scoreText.textContent = score;
+
+            if (score === total) {
+                setTimeout(() => {
+                    if (victory) {
+                        victory.style.display = "flex";
+                    }
+                }, 300);
+            }
+        }
+
+        drag.parent.insertBefore(item, drag.next);
+        clearDragStyles(item);
+        drag = null;
+    }
+
+    item.addEventListener("pointerup", endDrag);
+    item.addEventListener("pointercancel", endDrag);
+});
+
+boxes.forEach(box => {
+    box.addEventListener("dragover", e => e.preventDefault());
+    box.addEventListener("drop", e => e.preventDefault());
+});
 
 if (victory) {
     victory.addEventListener("click", () => {

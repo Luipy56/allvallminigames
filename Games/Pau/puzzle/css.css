@@ -1,6 +1,7 @@
 .pieza {
     height: 200px;
     margin: 0px;
+    touch-action: none;
 }
 .container{
     display: grid;
@@ -23,6 +24,7 @@
     width: 200px;
     border: solid 1px black;
     box-sizing: border-box;
+    touch-action: none;
 }
 
 #fin{

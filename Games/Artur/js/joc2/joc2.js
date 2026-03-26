@@ -2,26 +2,30 @@ const canvas = document.getElementById('meuCanvas');
 const ctx = canvas.getContext('2d');
 
 const spanPunts = document.querySelector('#puntuacio span');
-const restart= document.getElementById('restart');
+const restart = document.getElementById('restart');
 
 let punts = 0;
 const animals = ["🐶", "🐱", "🦁", "🐯", "🐷", "🐸", "🐵", "🦄"];
 let animalActual = "🦁";
 
-// posicio inicial
 let x = canvas.width / 2;
 let y = canvas.height / 2;
 
-restart.addEventListener('mousedown', reiniciarJoc);
+restart.addEventListener('click', reiniciarJoc);
 
-canvas.addEventListener('mousedown', (e) => {
-    
+function canvasClientToLogical(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
-    const clicX = e.clientX - rect.left;
-    const clicY = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
+    };
+}
 
-    // detectar si el clic es a prop de l'animal
-    const distancia = Math.sqrt((clicX - x)**2 + (clicY - y)**2);
+function intentarEncert(clientX, clientY) {
+    const { x: clicX, y: clicY } = canvasClientToLogical(clientX, clientY);
+    const distancia = Math.sqrt((clicX - x) ** 2 + (clicY - y) ** 2);
 
     if (distancia < 50) {
         punts++;
@@ -29,20 +33,38 @@ canvas.addEventListener('mousedown', (e) => {
 
         animalActual = animals[Math.floor(Math.random() * animals.length)];
 
-        // nova posicio
         x = Math.random() * (canvas.width - 100) + 50;
         y = Math.random() * (canvas.height - 100) + 50;
-        
+
         dibuixar();
     }
     comprovaVictoria();
-    
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    try {
+        canvas.setPointerCapture(e.pointerId);
+    } catch (_) {}
+    intentarEncert(e.clientX, e.clientY);
+});
+
+canvas.addEventListener('pointerup', (e) => {
+    if (canvas.hasPointerCapture(e.pointerId)) {
+        canvas.releasePointerCapture(e.pointerId);
+    }
+});
+
+canvas.addEventListener('pointercancel', (e) => {
+    if (canvas.hasPointerCapture(e.pointerId)) {
+        canvas.releasePointerCapture(e.pointerId);
+    }
 });
 
 function dibuixar() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // dibuixar animal
     ctx.font = "70px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -50,13 +72,14 @@ function dibuixar() {
 }
 
 function comprovaVictoria() {
-    if (punts>29) {
+    if (punts > 29) {
         const popup = document.getElementById('popup-victoria');
         popup.classList.add('mostrar');
     }
 }
+
 function reiniciarJoc() {
-    location.reload(); 
+    location.reload();
 }
 
 dibuixar();

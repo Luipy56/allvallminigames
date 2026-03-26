@@ -85,6 +85,7 @@ canvas {
     cursor: crosshair;
     display: block;
     max-width: 100%;
+    touch-action: none;
 }
 
 h2{
