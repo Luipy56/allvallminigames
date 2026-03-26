@@ -37,6 +37,8 @@ const figuras = [
 
 let figura=0, siguiente=1, lineas=[], arrastrando=false, mx=0, my=0, listo=false;
 let todoListo = false;
+let autoAdvanceTimer = null;
+const AUTO_ADVANCE_MS = 4000;
 
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
@@ -46,6 +48,37 @@ const BASE = 380;
 const getEscala = () => canvas.width / BASE;
 
 const getPuntos = (f, escala) => f.pts.map(p => ({ x: Math.round(p.x * escala), y: Math.round(p.y * escala) }));
+
+function clearAutoAdvance() {
+  if (autoAdvanceTimer !== null) {
+    clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = null;
+  }
+}
+
+function aplicarSiguienteTrasVictoria() {
+  const indice = figura + 1;
+  const siguienteFigura = indice < figuras.length ? figuras[indice] : null;
+  if (siguienteFigura) {
+    figura = indice; lineas = []; siguiente = 1; listo = false;
+    canvas.style.pointerEvents = 'auto';
+  } else {
+    todoListo = true;
+    canvas.style.pointerEvents = 'none';
+  }
+  clearAutoAdvance();
+  buildPicker();
+  redraw();
+}
+
+function programarAutoAvance() {
+  clearAutoAdvance();
+  if (!listo || todoListo) return;
+  autoAdvanceTimer = setTimeout(() => {
+    autoAdvanceTimer = null;
+    aplicarSiguienteTrasVictoria();
+  }, AUTO_ADVANCE_MS);
+}
 
 const buildPicker = () => {
   const el = document.getElementById('picker');
@@ -58,18 +91,9 @@ const buildPicker = () => {
     boton.className = 'pill-next';
     boton.style.setProperty('--accent', siguienteFigura ? siguienteFigura.accent : '#aaa');
     boton.textContent = siguienteFigura ? `Siguiente: ${siguienteFigura.name}` : 'Volver a juegos';
-    boton.onclick = () => {
-      if (siguienteFigura) {
-        figura = indice; lineas = []; siguiente = 1; listo = false;
-        canvas.style.pointerEvents = 'auto';
-      } else {
-        todoListo = true;
-        canvas.style.pointerEvents = 'none';
-      }
-      buildPicker();
-      redraw();
-    };
+    boton.onclick = () => aplicarSiguienteTrasVictoria();
     el.appendChild(boton);
+    programarAutoAvance();
   }
 };
 

@@ -66,19 +66,18 @@ function dibujarPlato() {
     });
 }
 
-/* Limpiar automáticamente al pasar el ratón + seguir esponja */
-lienzo.addEventListener('mousemove', (e) => {
+/* Ratón, lápiz y pantalla táctil (pointer events + capture para arrastre en tablet) */
+function procesarInteraccion(clientX, clientY) {
     const rect = lienzo.getBoundingClientRect();
     const scaleX = lienzo.width / rect.width;
     const scaleY = lienzo.height / rect.height;
-    const mx = (e.clientX - rect.left) * scaleX;
-    const my = (e.clientY - rect.top) * scaleY;
+    const mx = (clientX - rect.left) * scaleX;
+    const my = (clientY - rect.top) * scaleY;
 
-    /* Esponja: mismas coordenadas que el cursor, relativas al .game-shell (no al body) */
     if (spongeHint && gameShell) {
         const shell = gameShell.getBoundingClientRect();
-        spongeHint.style.left = `${e.clientX - shell.left}px`;
-        spongeHint.style.top = `${e.clientY - shell.top}px`;
+        spongeHint.style.left = `${clientX - shell.left}px`;
+        spongeHint.style.top = `${clientY - shell.top}px`;
     }
 
     if (!platoActual) return;
@@ -87,7 +86,7 @@ lienzo.addEventListener('mousemove', (e) => {
     platoActual.suciedad.forEach(s => {
         const dx = mx - (platoActual.x + s.x);
         const dy = my - (platoActual.y + s.y);
-        if (!s.limpio && Math.sqrt(dx*dx + dy*dy) < s.radio + 20) {
+        if (!s.limpio && Math.sqrt(dx * dx + dy * dy) < s.radio + 20) {
             s.limpio = true;
             cambio = true;
         }
@@ -100,8 +99,8 @@ lienzo.addEventListener('mousemove', (e) => {
         platoActual = null;
 
         if (platosLimpios >= MAX_PLATOS) {
-            setTimeout(() => { 
-                victoriaDiv.style.display = 'block'; 
+            setTimeout(() => {
+                victoriaDiv.style.display = 'block';
                 if (spongeHint) spongeHint.style.display = 'none';
             }, 100);
         } else {
@@ -110,5 +109,27 @@ lienzo.addEventListener('mousemove', (e) => {
                 if (spongeHint) spongeHint.style.display = 'block';
             }, 300);
         }
+    }
+}
+
+function onPointerMove(e) {
+    procesarInteraccion(e.clientX, e.clientY);
+}
+
+lienzo.addEventListener('pointermove', onPointerMove);
+lienzo.addEventListener('pointerdown', (e) => {
+    try {
+        lienzo.setPointerCapture(e.pointerId);
+    } catch (_) { /* noop */ }
+    procesarInteraccion(e.clientX, e.clientY);
+});
+lienzo.addEventListener('pointerup', (e) => {
+    if (lienzo.hasPointerCapture(e.pointerId)) {
+        lienzo.releasePointerCapture(e.pointerId);
+    }
+});
+lienzo.addEventListener('pointercancel', (e) => {
+    if (lienzo.hasPointerCapture(e.pointerId)) {
+        lienzo.releasePointerCapture(e.pointerId);
     }
 });

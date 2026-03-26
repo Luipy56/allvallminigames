@@ -18,9 +18,34 @@ let items = [];
 const emojisArray = Array.from("🍇🍎🍌🍉🥪🍔🌭🍫🍟🧀🥩🥕🌽🥐🧁🍭🥑🍋🍋‍🟩🍓🌯");
 let spawnTimer = 0;
 
-canvas.addEventListener("mousemove", (e) => {
+function updatePlayerFromClientX(clientX) {
   const rect = canvas.getBoundingClientRect();
-  player.x = e.clientX - rect.left - player.size / 2;
+  const scaleX = canvas.width / rect.width;
+  const x = (clientX - rect.left) * scaleX - player.size / 2;
+  player.x = Math.max(0, Math.min(canvas.width - player.size, x));
+}
+
+canvas.addEventListener("pointermove", (e) => {
+  updatePlayerFromClientX(e.clientX);
+});
+
+canvas.addEventListener("pointerdown", (e) => {
+  try {
+    canvas.setPointerCapture(e.pointerId);
+  } catch (_) {}
+  updatePlayerFromClientX(e.clientX);
+});
+
+canvas.addEventListener("pointerup", (e) => {
+  if (canvas.hasPointerCapture(e.pointerId)) {
+    canvas.releasePointerCapture(e.pointerId);
+  }
+});
+
+canvas.addEventListener("pointercancel", (e) => {
+  if (canvas.hasPointerCapture(e.pointerId)) {
+    canvas.releasePointerCapture(e.pointerId);
+  }
 });
 
 function spawnItem() {
