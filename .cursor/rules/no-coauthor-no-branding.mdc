@@ -1,0 +1,36 @@
+---
+description: No Co-authored-by, tool branding, or promotional footers in commits or output
+alwaysApply: true
+---
+
+# No co-author trailers, branding, or advertising
+
+Never add attribution or promotional material for tools or assistants.
+
+## Git commits
+
+- Do not add `Co-authored-by:` (or similar trailer lines) to commit messages.
+- Do not name or credit Cursor, Cursor Agent, “cursor-agent”, or any AI/assistant in commits.
+
+## All other output
+
+- Do not inject IDE, tool, or assistant branding into user-facing text, docs, comments, or generated artifacts unless the user explicitly asked for it.
+- Do not add “Made with …”, “Built with …”, or similar promotional badges or footers.
+
+## Examples
+
+```text
+# BAD (commit message footer)
+Co-authored-by: Cursor <noreply@cursor.com>
+
+# GOOD
+(omit any Co-authored-by and any tool/assistant mention)
+```
+
+```html
+<!-- BAD -->
+<footer>Made with Cursor</footer>
+
+<!-- GOOD -->
+(no tool branding unless the user requested it)
+```

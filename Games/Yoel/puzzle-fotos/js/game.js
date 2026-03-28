@@ -9,7 +9,7 @@
   const ROWS = 2;
   const COLS = 4;
   const TOTAL = ROWS * COLS;
-  const IMAGE_NAME_PATTERN = 'img'; // img1.png, img2.png, ...
+  const IMAGE_NAME_PATTERN = 'img'; // img1.jpg, img2.jpg, ...
   const IMAGE_MAX_PROBE = 100;      // deja de probar tras N intentos
   const USED_IMAGES_KEY = 'puzzle-fotos-used';
   const VICTORY_NEXT_MS = 5000; // tras completar, pasar a otra foto automáticamente
@@ -74,7 +74,7 @@
     return available[Math.floor(Math.random() * available.length)];
   }
 
-  /** Descubre imágenes: primero intenta manifest.json; si no existe, prueba img1.png, img2.png, ... */
+  /** Descubre imágenes: primero intenta manifest.json; si no existe, prueba img1.jpg, img2.jpg, ... */
   function discoverImages(done) {
     var manifestUrl = 'images/manifest.json';
     fetch(manifestUrl)
@@ -99,7 +99,7 @@
         done();
         return;
       }
-      var name = IMAGE_NAME_PATTERN + n + '.png';
+      var name = IMAGE_NAME_PATTERN + n + '.jpg';
       var img = new Image();
       img.onload = function () {
         list.push(name);
@@ -367,7 +367,7 @@
     var filename = pickRandomImage();
     if (!filename) {
       setImageLoading(false);
-      showModal('Sin imágenes', 'Añade fotos en la carpeta images/ con nombres img1.png, img2.png, img3.png, etc.', function () {});
+      showModal('Sin imágenes', 'Añade fotos en la carpeta images/ con nombres img1.jpg, img2.jpg, img3.jpg, etc.', function () {});
       return;
     }
     currentImagePath = 'images/' + filename;
